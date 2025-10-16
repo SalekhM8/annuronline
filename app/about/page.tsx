@@ -1,6 +1,17 @@
 export default function AboutPage() {
   return (
     <div className="py-10 space-y-10">
+      {/* Mission statement */}
+      <div className="mx-auto max-w-5xl rounded-2xl border border-[--brand-gold]/30 p-6 ring-1 ring-[--brand-gold]/20" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }}>
+        <h1 className="text-2xl font-semibold text-[--foreground]">Our Mission</h1>
+        <p className="mt-2 text-neutral-800">At An‑Nur Academy, our mission is to make Islamic education accessible to all, helping students build a strong connection with their faith from anywhere in the world. We focus on nurturing Taqwa (awareness of Allah), instilling core Islamic values, and equipping learners to live their faith confidently in today’s world.</p>
+        <p className="mt-3 text-neutral-800">Guided by four key principles — Tawheed (Oneness of Allah), Taqwa, Ilm (knowledge), and Amal (action) — our programs aim to be both informative and transformative.</p>
+        <div className="mt-4 rounded-xl border border-[--brand-gold]/30 p-4" style={{ background: 'color-mix(in oklab, var(--brand-gold), white 90%)' }}>
+          <div className="text-center text-xl font-semibold tracking-tight text-[--foreground]">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</div>
+          <div className="mt-1 text-center text-sm italic text-neutral-800">“Read! In the name of your Lord who created.” (Surah Al‑‘Alaq 96:1)</div>
+        </div>
+        <p className="mt-3 text-neutral-800">Since 2020, we’ve offered flexible, high‑quality online courses led by experienced Scholars and Huffaaz. From foundational Qaidah and Quran lessons to advanced Hifdh and Islamic Studies, our curriculum serves students of all ages and levels.</p>
+      </div>
       {/* Hero image with CTA overlay */}
       <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl ring-1 ring-[--brand-gold]/30">
         <div className="h-[420px] bg-[url('/images/islamicstudies.png')] bg-cover bg-center" />
