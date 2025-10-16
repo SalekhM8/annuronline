@@ -1,13 +1,27 @@
 @import "tailwindcss";
 
+/* Brand theme: green, gold, white */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7faf8; /* soft off‑white with green tint */
+  --foreground: #0f2719; /* deep green, not black */
+  --brand-green: #1fa36a;
+  --brand-green-600: #168a59;
+  --brand-gold: #caa536;
+  --brand-gold-700: #a9891f;
+  --brand-white: #ffffff;
+  --muted: #f1f7f3; /* soft greenish panel */
+  --border: #e6efe9; /* subtle border, no harsh black */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand-green);
+  --color-brand-600: var(--brand-green-600);
+  --color-gold: var(--brand-gold);
+  --color-gold-700: var(--brand-gold-700);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -15,12 +29,77 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #f1f5f3;
+    --muted: #0f1411;
+    --border: #1f2937;
   }
 }
 
+html, body { scroll-behavior: smooth; }
+
 body {
-  background: var(--background);
+  /* Test: full-site light green→gold gradient */
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--brand-green), white 85%),
+    color-mix(in oklab, var(--brand-gold), white 85%)
+  );
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Soft background accents */
+.bg-soft {
+  background: radial-gradient(60% 60% at 20% 10%, color-mix(in oklab, var(--brand-gold), transparent 80%), transparent 60%),
+              radial-gradient(80% 60% at 100% 0%, color-mix(in oklab, var(--brand-green), transparent 85%), transparent 60%);
+}
+
+/* Brand helpers */
+.brand-gradient {
+  background: linear-gradient(135deg, color-mix(in oklab, var(--brand-green), transparent 85%), color-mix(in oklab, var(--brand-gold), transparent 85%));
+}
+
+/* Soft brand backgrounds */
+.bg-gold-soft { background: color-mix(in oklab, var(--brand-gold), white 85%); }
+
+/* Option cards: grow + glow on hover */
+.option-card {
+  @apply relative rounded-xl p-4 ring-1 ring-[--brand-gold]/30 shadow-sm transition-transform duration-200 ease-out;
+}
+.option-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px color-mix(in oklab, var(--brand-green), transparent 70%), 0 0 0 2px color-mix(in oklab, var(--brand-gold), transparent 50%);
+}
+
+/* CTA overlay tweak */
+.cta-overlay {
+  background: linear-gradient(180deg, color-mix(in oklab, black, transparent 85%), color-mix(in oklab, var(--brand-green), transparent 80%));
+}
+
+/* Buttons */
+.btn { @apply inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer; }
+.btn-primary { @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium shadow-sm text-[--foreground] ring-1 ring-[--brand-gold]/40 border border-[--brand-gold]/40; background: color-mix(in oklab, var(--brand-green), white 85%); }
+.btn-primary:hover { @apply border-[--brand-gold]/60 ring-[--brand-gold]/60; background: color-mix(in oklab, var(--brand-green), white 80%); }
+.btn-secondary { @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium shadow-sm text-[--foreground] ring-1 ring-[--brand-gold]/40 border border-[--brand-gold]/40; background: color-mix(in oklab, var(--brand-gold), white 85%); }
+.btn-secondary:hover { @apply border-[--brand-gold]/60 ring-[--brand-gold]/60; background: color-mix(in oklab, var(--brand-gold), white 80%); }
+
+/* Cards */
+.card { @apply relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur shadow-md transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg; }
+.card-hover-glow::after {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  background: radial-gradient(600px circle at var(--x) var(--y), color-mix(in oklab, var(--brand-gold), transparent 75%), transparent 40%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.card-hover-glow:hover::after {
+  opacity: 1;
+}
+
+/* Utilities */
+.container-px { @apply px-4 sm:px-6 lg:px-8; }
+
+/* Typography tweaks */
+h1, h2, h3 {
+  @apply tracking-tight;
 }

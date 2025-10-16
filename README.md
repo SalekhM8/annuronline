@@ -1,3 +1,11 @@
+# An‑Nur Academy Website
+
+Development notes:
+- Env: set `ADMIN_PASSWORD` in `.env`. SQLite used via Prisma in `dev.db`.
+- Forms submit to `/api/submit` and are visible in `/admin` after login.
+- Replace images in `public/images/` and the logo `public/annurlogo.JPG` as needed.
+- Deploy on Vercel; set `DATABASE_URL` to `file:./dev.db` for preview/dev or migrate to Postgres for production.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

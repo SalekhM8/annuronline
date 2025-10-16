@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Submission {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  type          SubmissionType
+  fullName      String
+  email         String
+  phone         String?
+  forWhom       String?  // self / someone else
+  studentName   String?
+  relationship  String?
+  age           Int?
+  gender        String?
+  courses       String   // comma-separated list of offerings
+  preferences   String?  // group/1:1, class times, availability, etc.
+  comments      String?
+  heardAbout    String?
+}
+
+enum SubmissionType {
+  ASSESSMENT
+  ENROLLMENT
+}
+
