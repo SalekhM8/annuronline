@@ -8,8 +8,18 @@ type Submission = {
   type: "ASSESSMENT" | "ENROLLMENT";
   fullName: string;
   email: string;
-  courses: string;
-};
+  courses: string; // comma-separated
+} & Partial<{
+  phone: string;
+  forWhom: string;
+  studentName: string;
+  relationship: string;
+  age: number;
+  gender: string;
+  preferences: string;
+  comments: string;
+  heardAbout: string;
+}>;
 
 export default function AdminPage() {
   const [authed, setAuthed] = useState(false);

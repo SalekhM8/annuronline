@@ -1,6 +1,5 @@
 import Link from "next/link";
 import CardLink from "@/components/ui/CardLink";
-import SubmissionForm from "@/components/forms/SubmissionForm";
 
 export default function Home() {
   const cards = [
@@ -18,8 +17,8 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 rounded-full border border-[--border] bg-white/70 px-3 py-1 text-xs text-[--color-brand]">
               🌍 UK‑based • Accessible worldwide
             </div>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight">Learn with Qualified, English‑speaking Teachers</h1>
-            <p className="mt-3 text-neutral-700">Simple, minimal, and focused learning in your timezone.</p>
+            <h1 className="mt-4 text-4xl font-semibold leading-tight">Quran, Arabic and Islam with Qualified English Teachers.</h1>
+            <p className="mt-3 text-neutral-700">Personalised lessons for all ages and levels.</p>
             <div className="mt-6 flex flex-wrap gap-3">
             <Link href="/assessment" className="btn-primary">Free Assessment</Link>
               <Link href="/enroll" className="btn-secondary">Enroll</Link>

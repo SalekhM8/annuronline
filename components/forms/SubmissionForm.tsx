@@ -32,7 +32,9 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
     reset,
     formState: { errors },
   } = useForm<SubmissionValues>({
-    resolver: zodResolver(schema),
+    // Relax type to satisfy resolver generics in CI builds
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: zodResolver(schema) as unknown as any,
     defaultValues: { type, courses: [] },
   });
 
