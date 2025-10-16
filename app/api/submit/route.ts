@@ -23,6 +23,7 @@ export async function POST(req: Request) {
     });
     return NextResponse.json({ ok: true, id: record.id });
   } catch (e) {
+    console.error("/api/submit error", e);
     return NextResponse.json({ ok: false, error: "Unable to save" }, { status: 500 });
   }
 }
