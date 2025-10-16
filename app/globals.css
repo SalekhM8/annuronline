@@ -11,6 +11,7 @@
   --brand-white: #ffffff;
   --muted: #f1f7f3; /* soft greenish panel */
   --border: #e6efe9; /* subtle border, no harsh black */
+  color-scheme: light; /* force light theme; do not auto-switch */
 }
 
 @theme inline {
@@ -26,14 +27,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #f1f5f3;
-    --muted: #0f1411;
-    --border: #1f2937;
-  }
-}
+/* Disable automatic dark-mode variable swapping to keep brand colors consistent */
 
 html, body { scroll-behavior: smooth; }
 
