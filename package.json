@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "npm run prisma:generate && next build --turbopack",
     "start": "next start",
     "lint": "eslint",
     "prisma:generate": "prisma generate",
@@ -34,5 +34,29 @@
     "eslint-config-next": "15.5.5",
     "tailwindcss": "^4",
     "typescript": "^5"
+  }
+  ,
+  "overrides": {}
+  ,
+  "optionalDependencies": {}
+  ,
+  "packageManager": "npm"
+  ,
+  "engines": {
+    "node": ">=18"
+  }
+  ,
+  "prisma": {
+    "seed": "node --eval \"console.log('no seed')\""
+  }
+  ,
+  "pnpm": {
+  }
+  ,
+  "resolutions": {
+  }
+  ,
+  "scriptsAdded": {
+    "postinstall": "prisma generate"
   }
 }
