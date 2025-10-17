@@ -1,81 +1,142 @@
 export default function AboutPage() {
   return (
-    <div className="py-10 space-y-10">
-      {/* Mission statement */}
-      <div className="mx-auto max-w-5xl rounded-2xl border border-[--brand-gold]/30 p-6 ring-1 ring-[--brand-gold]/20" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }}>
-        <h1 className="text-2xl font-semibold text-[--foreground]">Our Mission</h1>
-        <p className="mt-2 text-neutral-800">At An‑Nur Academy, our mission is to make Islamic education accessible to all, helping students build a strong connection with their faith from anywhere in the world. We focus on nurturing Taqwa (awareness of Allah), instilling core Islamic values, and equipping learners to live their faith confidently in today’s world.</p>
-        <p className="mt-3 text-neutral-800">Guided by four key principles — Tawheed (Oneness of Allah), Taqwa, Ilm (knowledge), and Amal (action) — our programs aim to be both informative and transformative.</p>
-        <div className="mt-4 rounded-xl border border-[--brand-gold]/30 p-4" style={{ background: 'color-mix(in oklab, var(--brand-gold), white 90%)' }}>
-          <div className="text-center text-xl font-semibold tracking-tight text-[--foreground]">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</div>
-          <div className="mt-1 text-center text-sm italic text-neutral-800">“Read! In the name of your Lord who created.” (Surah Al‑‘Alaq 96:1)</div>
-        </div>
-        <p className="mt-3 text-neutral-800">Since 2020, we’ve offered flexible, high‑quality online courses led by experienced Scholars and Huffaaz. From foundational Qaidah and Quran lessons to advanced Hifdh and Islamic Studies, our curriculum serves students of all ages and levels.</p>
+    <div className="py-10 space-y-10 max-w-6xl mx-auto">
+      {/* 🎉 PLAYFUL HERO TITLE */}
+      <div className="text-center space-y-4">
+        <h1 className="text-5xl md:text-6xl font-bold text-playful gradient-text">
+          About Us! 📖✨
+        </h1>
+        <p className="text-2xl text-[--brand-green-dark] font-semibold">
+          Who We Are & What We Do 🌟
+        </p>
       </div>
-      {/* Hero image with CTA overlay */}
-      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl ring-1 ring-[--brand-gold]/30">
-        <div className="h-[420px] bg-[url('/images/islamicstudies.png')] bg-cover bg-center" />
-        <div className="absolute inset-0 z-10 cta-overlay" />
-        <div className="absolute inset-0 z-20 flex items-center justify-center">
-          <div className="rounded-2xl bg-white/85 px-6 py-5 text-center shadow-md ring-1 ring-[--brand-gold]/30 backdrop-blur">
-            <div className="text-base font-semibold text-[--foreground]">Ready to Join?</div>
-            <div className="mt-3 flex justify-center gap-3">
-              <a href="/assessment" className="btn-primary">Book Free Assessment</a>
-              <a href="/enroll" className="btn-secondary">Enroll</a>
-            </div>
+
+      {/* 🎯 OUR MISSION - Big Fun Box */}
+      <div className="fun-box-green text-white space-y-6">
+        <div className="text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-playful mb-4">
+            🎯 Our Mission
+          </h2>
+        </div>
+        <p className="text-xl md:text-2xl leading-relaxed text-center">
+          At <span className="font-bold text-[--brand-gold-light]">An‑Nur Academy</span>, our mission is to make <span className="font-bold">Islamic education accessible to all</span>, helping students build a <span className="font-bold text-[--brand-gold-light]">strong connection with their faith</span> from anywhere in the world. 🌍
+        </p>
+        <p className="text-xl md:text-2xl leading-relaxed text-center">
+          We focus on nurturing <span className="font-bold text-[--brand-gold-light]">Taqwa</span> (awareness of Allah), instilling core <span className="font-bold">Islamic values</span>, and equipping learners to live their faith confidently in today's world! 💪
+        </p>
+      </div>
+
+      {/* 🌟 FOUR KEY PRINCIPLES */}
+      <div className="fun-box-gold space-y-6">
+        <h2 className="text-4xl md:text-5xl font-bold text-playful text-[--brand-green-dark] text-center">
+          🌟 Our 4 Key Principles
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="fun-box-white text-center space-y-3">
+            <div className="text-5xl">☝️</div>
+            <h3 className="text-2xl font-bold text-[--brand-green]">Tawheed</h3>
+            <p className="text-lg text-[--brand-green-dark]">Oneness of Allah</p>
+          </div>
+          <div className="fun-box-white text-center space-y-3">
+            <div className="text-5xl">💚</div>
+            <h3 className="text-2xl font-bold text-[--brand-green]">Taqwa</h3>
+            <p className="text-lg text-[--brand-green-dark]">Awareness & Fear of Allah</p>
+          </div>
+          <div className="fun-box-white text-center space-y-3">
+            <div className="text-5xl">📚</div>
+            <h3 className="text-2xl font-bold text-[--brand-green]">Ilm</h3>
+            <p className="text-lg text-[--brand-green-dark]">Knowledge</p>
+          </div>
+          <div className="fun-box-white text-center space-y-3">
+            <div className="text-5xl">⚡</div>
+            <h3 className="text-2xl font-bold text-[--brand-green]">Amal</h3>
+            <p className="text-lg text-[--brand-green-dark]">Action</p>
           </div>
         </div>
+        <p className="text-2xl text-center text-[--brand-green-dark] font-bold">
+          Our programs aim to be both <span className="text-[--brand-green]">informative</span> and <span className="text-[--brand-green]">transformative!</span> 🚀
+        </p>
       </div>
 
-      {/* Structured content grid */}
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
-        <Card title="Our Approach" tone="green">
-          <p>
-            At An‑Nur Academy, we provide a holistic, enriching experience centred on four principles: Personalised Learning, Qualified Instructors, Interactive & Engaging teaching, and a Vision to Inspire and Nurture.
+      {/* 📖 QURANIC VERSE */}
+      <div className="fun-box-white space-y-6">
+        <div className="text-center space-y-4">
+          <div className="text-6xl">📖</div>
+          <div className="arabic-text text-3xl md:text-4xl">
+            اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
+          </div>
+          <p className="text-xl md:text-2xl italic text-[--brand-green-dark] font-semibold">
+            "Read! In the name of your Lord who created."
           </p>
-          <p className="mt-3 font-semibold italic text-[--foreground]">
-            “Those who were given knowledge are raised by degrees.” — Surah Al‑Mujadila 58:11
+          <p className="text-lg text-[--brand-gold-dark] font-bold">
+            (Surah Al-'Alaq, 96:1)
           </p>
-        </Card>
-        <Card title="Personalised Learning" tone="gold">
-          <p>
-            Each student receives individual attention at their pace. Flexible online classes make learning from home simple — join a group or choose 1:1 lessons.
-          </p>
-        </Card>
-        <Card title="Interactive & Engaging" tone="green">
-          <p>
-            We encourage active participation through multimedia resources, guided discussion, and practical application to build a lasting love for learning.
-          </p>
-          <p className="mt-3 font-semibold italic text-[--foreground]">
-            “Seeking knowledge is an obligation upon every Muslim.” — Sunan Ibn Majah
-          </p>
-        </Card>
-        <Card title="Qualified Instructors" tone="gold">
-          <p>
-            Our teachers are experienced across Quran, Arabic, and Islamic Studies — passionate, empathetic, and committed to student success.
-          </p>
-          <p className="mt-3 font-semibold italic text-[--foreground]">
-            “I was only sent as a teacher.” — Sahih Muslim
-          </p>
-        </Card>
+        </div>
       </div>
-    </div>
-  );
-}
 
-function Card({ title, children, tone = "green" }: { title: string; children: React.ReactNode; tone?: "green" | "gold" }) {
-  return (
-    <div
-      className="rounded-2xl border border-[--brand-gold]/30 p-6 ring-1 ring-[--brand-gold]/20"
-      style={{
-        background:
-          tone === "gold"
-            ? "color-mix(in oklab, var(--brand-gold), white 90%)"
-            : "color-mix(in oklab, var(--brand-green), white 92%)",
-      }}
-    >
-      <h3 className="font-semibold text-[--brand-green]">{title}</h3>
-      <div className="mt-2 text-neutral-800">{children}</div>
+      {/* 🎓 SINCE 2020 */}
+      <div className="fun-box-green text-white space-y-6">
+        <div className="text-center space-y-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-playful">
+            🎓 Since 2020!
+          </h2>
+          <p className="text-xl md:text-2xl leading-relaxed">
+            We've offered <span className="font-bold text-[--brand-gold-light]">flexible, high-quality</span> online courses led by experienced <span className="font-bold text-[--brand-gold-light]">Scholars and Huffaaz</span>. 👨‍🏫
+          </p>
+          <p className="text-xl md:text-2xl leading-relaxed">
+            From foundational <span className="font-bold text-[--brand-gold-light]">Qaidah</span> and <span className="font-bold text-[--brand-gold-light]">Quran</span> lessons to advanced <span className="font-bold text-[--brand-gold-light]">Hifdh</span> and <span className="font-bold text-[--brand-gold-light]">Islamic Studies</span>, our curriculum serves students of <span className="font-bold text-[--brand-gold-light]">all ages and levels!</span> 👶👧🧒👨👴
+          </p>
+        </div>
+      </div>
+
+      {/* 🎉 FUN FEATURES GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="fun-card text-center space-y-4">
+          <div className="text-6xl float">🎯</div>
+          <h3 className="text-2xl font-bold text-playful text-[--brand-green]">
+            Personalized Learning
+          </h3>
+          <p className="text-lg text-[--brand-green-dark]">
+            Each student gets individual attention at their own pace! 🏃‍♂️
+          </p>
+        </div>
+        <div className="fun-card text-center space-y-4">
+          <div className="text-6xl float">👨‍🏫</div>
+          <h3 className="text-2xl font-bold text-playful text-[--brand-green]">
+            Qualified Teachers
+          </h3>
+          <p className="text-lg text-[--brand-green-dark]">
+            Experienced Scholars & Huffaaz who truly care! 💚
+          </p>
+        </div>
+        <div className="fun-card text-center space-y-4">
+          <div className="text-6xl float">🎮</div>
+          <h3 className="text-2xl font-bold text-playful text-[--brand-green]">
+            Interactive & Fun
+          </h3>
+          <p className="text-lg text-[--brand-green-dark]">
+            Engaging lessons that make learning exciting! 🎉
+          </p>
+        </div>
+      </div>
+
+      {/* 🚀 CALL TO ACTION */}
+      <div className="fun-box-gold text-center space-y-6 py-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-playful text-[--brand-green-dark]">
+          Ready to Start Your Journey? 🚀
+        </h2>
+        <p className="text-2xl text-[--brand-green-dark] font-semibold">
+          Join thousands of students worldwide! 🌍✨
+        </p>
+        <div className="flex flex-wrap justify-center gap-6 mt-8">
+          <a href="/assessment" className="btn-fun text-xl px-10 py-5">
+            📋 Free Assessment
+          </a>
+          <a href="/enroll" className="btn-fun-gold text-xl px-10 py-5">
+            🎓 Enroll Now
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

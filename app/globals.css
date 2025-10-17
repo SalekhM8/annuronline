@@ -1,99 +1,277 @@
 @import "tailwindcss";
 
-/* Brand theme: green, gold, white */
+/* 🎨 VIBRANT PLAYFUL BRAND THEME - Gen Z Islamic Learning! */
 :root {
-  --background: #f7faf8; /* soft off‑white with green tint */
-  --foreground: #0f2719; /* deep green, not black */
-  --brand-green: #1fa36a;
-  --brand-green-600: #168a59;
-  --brand-gold: #caa536;
-  --brand-gold-700: #a9891f;
-  --brand-white: #ffffff;
-  --muted: #f1f7f3; /* soft greenish panel */
-  --border: #e6efe9; /* subtle border, no harsh black */
-  color-scheme: light; /* force light theme; do not auto-switch */
+  --background: #fefdf8; /* warm off-white */
+  --foreground: #0a3622; /* deep forest green */
+  
+  /* 🌟 BRIGHT & BOLD COLORS */
+  --brand-green: #00a86b; /* vibrant emerald green */
+  --brand-green-light: #4cd964; /* bright lime green */
+  --brand-green-dark: #006241; /* deep forest */
+  --brand-gold: #fdb927; /* bright sunny gold */
+  --brand-gold-light: #ffdf3c; /* vibrant yellow */
+  --brand-gold-dark: #d4941d; /* rich gold */
+  --brand-purple: #9b59b6; /* fun purple accent */
+  --brand-blue: #3498db; /* sky blue */
+  --brand-orange: #ff9500; /* energetic orange */
+  
+  /* 🎯 SEMANTIC COLORS */
+  --fun-bg-1: #e8f8f2; /* mint */
+  --fun-bg-2: #fff9e6; /* cream */
+  --fun-bg-3: #f0e6ff; /* lavender */
+  --shadow-color: rgba(0, 168, 107, 0.2);
+  
+  color-scheme: light;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-brand: var(--brand-green);
-  --color-brand-600: var(--brand-green-600);
   --color-gold: var(--brand-gold);
-  --color-gold-700: var(--brand-gold-700);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-/* Disable automatic dark-mode variable swapping to keep brand colors consistent */
-
-html, body { scroll-behavior: smooth; }
+/* 🌈 ANIMATED BACKGROUND */
+html, body { 
+  scroll-behavior: smooth; 
+}
 
 body {
-  /* Test: full-site light green→gold gradient */
-  background: linear-gradient(
-    135deg,
-    color-mix(in oklab, var(--brand-green), white 85%),
-    color-mix(in oklab, var(--brand-gold), white 85%)
+  background: linear-gradient(135deg, 
+    #e8f8f2 0%, 
+    #fff9e6 50%, 
+    #f0e6ff 100%
   );
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
   color: var(--foreground);
+  font-family: var(--font-body), 'Nunito', system-ui, sans-serif;
 }
 
-/* Soft background accents */
-.bg-soft {
-  background: radial-gradient(60% 60% at 20% 10%, color-mix(in oklab, var(--brand-gold), transparent 80%), transparent 60%),
-              radial-gradient(80% 60% at 100% 0%, color-mix(in oklab, var(--brand-green), transparent 85%), transparent 60%);
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-/* Brand helpers */
-.brand-gradient {
-  background: linear-gradient(135deg, color-mix(in oklab, var(--brand-green), transparent 85%), color-mix(in oklab, var(--brand-gold), transparent 85%));
+/* 🎪 FUN BACKGROUND PATTERNS */
+.bg-fun {
+  background-image: 
+    radial-gradient(circle at 20% 30%, var(--brand-gold-light) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--brand-green-light) 0%, transparent 50%);
+  opacity: 0.3;
 }
 
-/* Soft brand backgrounds */
-.bg-gold-soft { background: color-mix(in oklab, var(--brand-gold), white 85%); }
-
-/* Option cards: grow + glow on hover */
-.option-card {
-  @apply relative rounded-xl p-4 ring-1 ring-[--brand-gold]/30 shadow-sm transition-transform duration-200 ease-out;
-}
-.option-card:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 25px color-mix(in oklab, var(--brand-green), transparent 70%), 0 0 0 2px color-mix(in oklab, var(--brand-gold), transparent 50%);
+/* ✨ PLAYFUL CARDS WITH BOUNCE */
+.fun-card {
+  @apply relative rounded-3xl p-6 shadow-lg transition-all duration-300 ease-out;
+  background: white;
+  border: 4px solid var(--brand-green);
+  transform-origin: center;
 }
 
-/* CTA overlay tweak */
-.cta-overlay {
-  background: linear-gradient(180deg, color-mix(in oklab, black, transparent 85%), color-mix(in oklab, var(--brand-green), transparent 80%));
+.fun-card:hover {
+  transform: translateY(-8px) scale(1.03) rotate(1deg);
+  box-shadow: 0 20px 40px var(--shadow-color), 0 0 0 4px var(--brand-gold);
+  animation: wiggle 0.5s ease;
 }
 
-/* Buttons */
-.btn { @apply inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer; }
-.btn-primary { @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium shadow-sm text-[--foreground] ring-1 ring-[--brand-gold]/40 border border-[--brand-gold]/40; background: color-mix(in oklab, var(--brand-green), white 85%); }
-.btn-primary:hover { @apply border-[--brand-gold]/60 ring-[--brand-gold]/60; background: color-mix(in oklab, var(--brand-green), white 80%); }
-.btn-secondary { @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium shadow-sm text-[--foreground] ring-1 ring-[--brand-gold]/40 border border-[--brand-gold]/40; background: color-mix(in oklab, var(--brand-gold), white 85%); }
-.btn-secondary:hover { @apply border-[--brand-gold]/60 ring-[--brand-gold]/60; background: color-mix(in oklab, var(--brand-gold), white 80%); }
+@keyframes wiggle {
+  0%, 100% { transform: translateY(-8px) scale(1.03) rotate(1deg); }
+  25% { transform: translateY(-8px) scale(1.03) rotate(-1deg); }
+  50% { transform: translateY(-8px) scale(1.03) rotate(1deg); }
+  75% { transform: translateY(-8px) scale(1.03) rotate(-0.5deg); }
+}
 
-/* Cards */
-.card { @apply relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur shadow-md transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg; }
-.card-hover-glow::after {
-  content: "";
+/* 🎯 FUN BOX VARIATIONS */
+.fun-box-green {
+  @apply rounded-3xl p-8 relative overflow-hidden;
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-light) 100%);
+  border: 5px solid var(--brand-gold);
+  box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.fun-box-gold {
+  @apply rounded-3xl p-8 relative overflow-hidden;
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-gold-light) 100%);
+  border: 5px solid var(--brand-green);
+  box-shadow: 0 10px 30px rgba(253, 185, 39, 0.3);
+}
+
+.fun-box-white {
+  @apply rounded-3xl p-8 relative;
+  background: white;
+  border: 5px solid var(--brand-green);
+  box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+/* 🎨 OUTLINED TEXT EFFECT */
+.text-outlined {
+  text-shadow: 
+    -2px -2px 0 var(--brand-gold),
+    2px -2px 0 var(--brand-gold),
+    -2px 2px 0 var(--brand-gold),
+    2px 2px 0 var(--brand-gold);
+}
+
+/* 🔥 VIBRANT BUTTONS */
+.btn-fun {
+  @apply relative inline-flex items-center justify-center rounded-full px-8 py-4 text-lg font-bold uppercase tracking-wide transition-all duration-300 cursor-pointer;
+  font-family: var(--font-playful), 'Fredoka', sans-serif;
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-light) 100%);
+  color: white;
+  border: 4px solid var(--brand-gold);
+  box-shadow: 0 6px 20px var(--shadow-color);
+  transform: translateY(0);
+}
+
+.btn-fun:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 30px var(--shadow-color);
+  animation: pulse 0.6s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: translateY(-4px) scale(1.05); }
+  100% { transform: translateY(-4px) scale(1.08); }
+}
+
+.btn-fun-gold {
+  @apply relative inline-flex items-center justify-center rounded-full px-8 py-4 text-lg font-bold uppercase tracking-wide transition-all duration-300 cursor-pointer;
+  font-family: var(--font-playful), 'Fredoka', sans-serif;
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-gold-light) 100%);
+  color: var(--brand-green-dark);
+  border: 4px solid var(--brand-green);
+  box-shadow: 0 6px 20px rgba(253, 185, 39, 0.3);
+  transform: translateY(0);
+}
+
+.btn-fun-gold:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(253, 185, 39, 0.4);
+}
+
+/* 🎪 BOUNCING ANIMATION */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.bounce-on-hover:hover {
+  animation: bounce 0.6s ease infinite;
+}
+
+/* 🌟 FLOATING ANIMATION */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 🎨 GRADIENT TEXT */
+.gradient-text {
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 🌈 RAINBOW EMOJI DECORATION */
+.emoji-decor::before {
+  content: '✨';
   position: absolute;
-  inset: -100%;
-  background: radial-gradient(600px circle at var(--x) var(--y), color-mix(in oklab, var(--brand-gold), transparent 75%), transparent 40%);
-  opacity: 0;
-  transition: opacity 300ms ease;
-}
-.card-hover-glow:hover::after {
-  opacity: 1;
+  top: -10px;
+  right: -10px;
+  font-size: 2rem;
+  animation: float 2s ease-in-out infinite;
 }
 
-/* Utilities */
+/* 📝 PLAYFUL TYPOGRAPHY */
+.text-playful {
+  font-family: var(--font-playful), 'Fredoka', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.text-fun-xl {
+  font-family: var(--font-playful), 'Fredoka', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.text-fun-lg {
+  font-family: var(--font-playful), 'Fredoka', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* ⚡ INTERACTIVE HOVER EFFECTS */
+.scale-bounce:hover {
+  animation: scaleBounce 0.4s ease;
+}
+
+@keyframes scaleBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1.05); }
+}
+
+/* 🎯 OPTION CARDS - SUPER FUN */
+.option-card {
+  @apply relative rounded-2xl p-6 transition-all duration-300 cursor-pointer;
+  background: white;
+  border: 4px solid var(--brand-gold);
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.option-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  border-color: var(--brand-green);
+  box-shadow: 0 15px 40px var(--shadow-color);
+}
+
+/* 🎪 CONTAINER UTILITIES */
 .container-px { @apply px-4 sm:px-6 lg:px-8; }
 
-/* Typography tweaks */
-h1, h2, h3 {
+/* 📱 MOBILE FIRST TYPOGRAPHY */
+h1 {
+  font-family: var(--font-playful), 'Fredoka', sans-serif;
+  font-weight: 700;
   @apply tracking-tight;
+}
+
+h2 {
+  font-family: var(--font-playful), 'Fredoka', sans-serif;
+  font-weight: 600;
+  @apply tracking-tight;
+}
+
+h3, h4 {
+  font-family: var(--font-body), 'Nunito', sans-serif;
+  font-weight: 700;
+  @apply tracking-tight;
+}
+
+/* 🌟 SPARKLE EFFECT */
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+/* 🎨 ARABIC TEXT STYLING */
+.arabic-text {
+  font-family: var(--font-arabic), 'Amiri', 'Traditional Arabic', serif;
+  font-size: 1.5rem;
+  line-height: 2;
+  direction: rtl;
+  color: var(--brand-green-dark);
+  font-weight: 700;
 }

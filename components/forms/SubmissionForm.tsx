@@ -62,95 +62,187 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
   }
 
   return (
-    <div className="rounded-2xl p-6 shadow-lg ring-1 ring-[--brand-gold]/30 backdrop-blur" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} onPointerMove={onPointer}>
-      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+    <div className="fun-box-white space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         <input type="hidden" value={type} {...register("type")} />
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div>
-            <label className="text-sm font-medium">Full Name *</label>
-            <input className="mt-1 w-full rounded-full border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} {...register("fullName")} />
-            {errors.fullName && <p className="mt-1 text-xs text-red-600">{errors.fullName.message}</p>}
-          </div>
-          <div>
-            <label className="text-sm font-medium">Email *</label>
-            <input className="mt-1 w-full rounded-full border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} type="email" {...register("email")} />
-            {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>}
-          </div>
-          <div>
-            <label className="text-sm font-medium">Phone</label>
-            <input className="mt-1 w-full rounded-full border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} {...register("phone")} />
-          </div>
-          <div>
-            <label className="text-sm font-medium">Is this for you or someone else?</label>
-            <select className="mt-1 w-full rounded-full border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} {...register("forWhom")}>
-              <option value="">Please select</option>
-              <option value="self">Myself</option>
-              <option value="someone">Someone else</option>
-            </select>
-          </div>
-          <div>
-            <label className="text-sm font-medium">Student Name (if different)</label>
-            <input className="mt-1 w-full rounded-full border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} {...register("studentName")} />
-          </div>
-          <div>
-            <label className="text-sm font-medium">Relationship to student</label>
-            <input className="mt-1 w-full rounded-full border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} {...register("relationship")} />
-          </div>
-          <div>
-            <label className="text-sm font-medium">Age</label>
-            <input className="mt-1 w-full rounded-full border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} type="number" {...register("age")} />
-          </div>
-          <div>
-            <label className="text-sm font-medium">Gender</label>
-            <select className="mt-1 w-full rounded-full border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} {...register("gender")}>
-              <option value="">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
+        
+        {/* 👤 PERSONAL INFO */}
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
+            <span className="text-3xl">👤</span> Your Info
+          </h3>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">Full Name *</label>
+              <input 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                placeholder="Your name" 
+                {...register("fullName")} 
+              />
+              {errors.fullName && <p className="mt-1 text-xs font-bold text-red-600">⚠️ {errors.fullName.message}</p>}
+            </div>
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">Email *</label>
+              <input 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                type="email" 
+                placeholder="your@email.com" 
+                {...register("email")} 
+              />
+              {errors.email && <p className="mt-1 text-xs font-bold text-red-600">⚠️ {errors.email.message}</p>}
+            </div>
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">Phone</label>
+              <input 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                placeholder="+44..." 
+                {...register("phone")} 
+              />
+            </div>
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">This is for...</label>
+              <select 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white cursor-pointer" 
+                {...register("forWhom")}
+              >
+                <option value="">Please select</option>
+                <option value="self">🙋 Myself</option>
+                <option value="someone">👥 Someone else</option>
+              </select>
+            </div>
           </div>
         </div>
 
-          <div className="mt-2">
-          <div className="text-sm font-medium">Which course(s) are you interested in? *</div>
-          <div className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 👶 STUDENT INFO */}
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
+            <span className="text-3xl">👶</span> Student Info
+          </h3>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">Student Name (if different)</label>
+              <input 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                placeholder="Student's name" 
+                {...register("studentName")} 
+              />
+            </div>
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">Relationship</label>
+              <input 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                placeholder="Parent, Guardian, etc." 
+                {...register("relationship")} 
+              />
+            </div>
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">Age</label>
+              <input 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                type="number" 
+                placeholder="Age" 
+                {...register("age")} 
+              />
+            </div>
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">Gender</label>
+              <select 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white cursor-pointer" 
+                {...register("gender")}
+              >
+                <option value="">Select</option>
+                <option value="male">👨 Male</option>
+                <option value="female">👩 Female</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* 📚 COURSES */}
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
+            <span className="text-3xl">📚</span> Pick Your Courses! *
+          </h3>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              "Qaidah",
-              "Quran",
-              "Hifz",
-              "Tajweed",
-              "Islamic Studies",
-              "Naseeha",
-              "Faith-based Counselling",
-              "Arabic",
+              { name: "Qaidah", emoji: "🔤" },
+              { name: "Quran", emoji: "📖" },
+              { name: "Hifz", emoji: "🧠" },
+              { name: "Tajweed", emoji: "🎵" },
+              { name: "Islamic Studies", emoji: "📚" },
+              { name: "Naseeha", emoji: "💚" },
+              { name: "Faith-based Counselling", emoji: "🤝" },
+              { name: "Arabic", emoji: "✍️" },
             ].map((c) => (
-              <label key={c} className="flex items-center gap-3 rounded-full p-2 ring-1 ring-[--brand-gold]/20" style={{ background: 'color-mix(in oklab, var(--brand-gold), white 90%)' }}>
-                <input className="accent-[--brand-green]" type="checkbox" value={c} {...register("courses")} />
-                <span className="text-sm">{c}</span>
+              <label key={c.name} className="option-card flex items-center gap-3 cursor-pointer bg-[--fun-bg-2]">
+                <input 
+                  className="w-5 h-5 accent-[--brand-green] cursor-pointer" 
+                  type="checkbox" 
+                  value={c.name} 
+                  {...register("courses")} 
+                />
+                <span className="text-2xl">{c.emoji}</span>
+                <span className="text-sm font-bold text-[--brand-green-dark]">{c.name}</span>
               </label>
             ))}
           </div>
-          {errors.courses && <p className="mt-1 text-xs text-red-600">{errors.courses.message}</p>}
+          {errors.courses && <p className="mt-2 text-sm font-bold text-red-600">⚠️ {errors.courses.message}</p>}
         </div>
 
-        <div className="mt-4">
-          <label className="text-sm font-medium">Preferences (group/1:1, days, times, availability)</label>
-          <textarea className="mt-1 w-full rounded-2xl border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} rows={4} {...register("preferences")} />
-        </div>
-        <div className="mt-4">
-          <label className="text-sm font-medium">Additional comments</label>
-          <textarea className="mt-1 w-full rounded-2xl border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} rows={3} {...register("comments")} />
-        </div>
-        <div className="mt-4">
-          <label className="text-sm font-medium">How did you hear about us?</label>
-          <input className="mt-1 w-full rounded-full border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} {...register("heardAbout")} />
+        {/* 💬 MORE INFO */}
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
+            <span className="text-3xl">💬</span> Tell Us More!
+          </h3>
+          <div className="space-y-4">
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">Preferences (group/1:1, days, times, availability)</label>
+              <textarea 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                rows={4} 
+                placeholder="Tell us your preferences..."
+                {...register("preferences")} 
+              />
+            </div>
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">Additional Comments</label>
+              <textarea 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                rows={3} 
+                placeholder="Any questions or comments?"
+                {...register("comments")} 
+              />
+            </div>
+            <div>
+              <label className="text-sm font-bold text-[--brand-green-dark]">How did you hear about us?</label>
+              <input 
+                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                placeholder="Social media, friend, etc." 
+                {...register("heardAbout")} 
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="mt-6 flex items-center gap-3">
-          <button className="btn-primary" type="submit" disabled={status === "submitting"}>
-            {status === "submitting" ? "Sending..." : "Send Message"}
+        {/* 🚀 SUBMIT */}
+        <div className="pt-4 space-y-4">
+          <button 
+            className="btn-fun w-full text-2xl py-6" 
+            type="submit" 
+            disabled={status === "submitting"}
+          >
+            {status === "submitting" ? "⏳ Sending..." : "🚀 Send Message!"}
           </button>
-          {status === "success" && <span className="text-sm text-[--color-brand]">Thank you! We will be in touch.</span>}
-          {status === "error" && <span className="text-sm text-red-600">Something went wrong. Please try again.</span>}
+          {status === "success" && (
+            <div className="fun-box-green text-white text-center p-4">
+              <p className="text-xl font-bold">✅ Thank you! We'll be in touch soon! 🎉</p>
+            </div>
+          )}
+          {status === "error" && (
+            <div className="bg-red-500 text-white text-center p-4 rounded-2xl">
+              <p className="text-lg font-bold">❌ Oops! Something went wrong. Please try again!</p>
+            </div>
+          )}
         </div>
       </form>
     </div>

@@ -1,10 +1,27 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fredoka, Nunito, Amiri } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
+import WhatsAppButton from "@/components/site/WhatsAppButton";
 
-const inter = Inter({ variable: "--font-geist-sans", subsets: ["latin"] });
+const fredoka = Fredoka({ 
+  variable: "--font-playful", 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"]
+});
+
+const nunito = Nunito({ 
+  variable: "--font-body", 
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800", "900"]
+});
+
+const amiri = Amiri({ 
+  variable: "--font-arabic", 
+  subsets: ["arabic", "latin"],
+  weight: ["400", "700"]
+});
 
 export const metadata: Metadata = {
   title: "An‑Nur Academy | UK‑based Online Islamic Academy",
@@ -37,10 +54,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${fredoka.variable} ${nunito.variable} ${amiri.variable} antialiased`}>
         <Header />
         <main className="container-px mx-auto">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
