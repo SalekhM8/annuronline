@@ -161,7 +161,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
               { name: "Qaidah", emoji: "🔤" },
               { name: "Quran", emoji: "📖" },
               { name: "Hifz", emoji: "🧠" },
-              { name: "Tajweed", emoji: "🎵" },
+              { name: "Tajweed", emoji: "🎙️" },
               { name: "Islamic Studies", emoji: "📚" },
               { name: "Naseeha", emoji: "💚" },
               { name: "Faith-based Counselling", emoji: "🤝" },

@@ -10,9 +10,9 @@ export default function TajweedPage() {
 
   return (
     <div className="py-10 space-y-12 max-w-6xl mx-auto">
-      {/* 🎵 HERO */}
+      {/* 🎙️ HERO */}
       <div className="text-center space-y-6">
-        <div className="text-7xl">🎵</div>
+        <div className="text-7xl">🎙️</div>
         <h1 className="text-5xl md:text-6xl font-bold text-playful gradient-text">
           Tajweed Classes! ✨
         </h1>

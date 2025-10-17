@@ -4,7 +4,7 @@ export default function Home() {
   const courses = [
     { title: "Islamic Studies", href: "/offerings/islamic-studies", emoji: "📚", color: "green", imageUrl: "/images/islamicstudies.png" },
     { title: "Quran", href: "/offerings/quran", emoji: "📖", color: "gold", imageUrl: "/images/quran.png" },
-    { title: "Tajweed", href: "/offerings/tajweed", emoji: "🎵", color: "green", imageUrl: "/images/tajweed.png" },
+    { title: "Tajweed", href: "/offerings/tajweed", emoji: "🎙️", color: "green", imageUrl: "/images/tajweed.png" },
     { title: "Learn Arabic", href: "/offerings/arabic", emoji: "✍️", color: "gold", imageUrl: "/images/learnarabic.png" },
   ];
 
@@ -103,22 +103,24 @@ export default function Home() {
               href={course.href}
               className={course.color === "green" ? "fun-box-green text-white" : "fun-box-gold text-[--brand-green-dark]"}
             >
-              <div className="flex items-center justify-between">
-                <div className="space-y-3 flex-1">
-                  <div className="text-7xl">{course.emoji}</div>
+              <div className="space-y-4">
+                {/* Image at top */}
+                <div className="h-48 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
+                  <img 
+                    src={course.imageUrl} 
+                    alt={course.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Content */}
+                <div className="space-y-3 text-center">
+                  <div className="text-6xl">{course.emoji}</div>
                   <h3 className="text-3xl md:text-4xl font-bold text-playful">
                     {course.title}
                   </h3>
                   <p className="text-lg font-semibold">
                     Click to learn more! →
                   </p>
-                </div>
-                <div className="hidden lg:block w-32 h-32 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
-                  <img 
-                    src={course.imageUrl} 
-                    alt={course.title}
-                    className="w-full h-full object-cover"
-                  />
                 </div>
               </div>
             </Link>

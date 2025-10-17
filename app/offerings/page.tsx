@@ -3,12 +3,12 @@ import Link from "next/link";
 const offerings = [
   { title: "Islamic Studies", href: "/offerings/islamic-studies", emoji: "📚", imageUrl: "/images/islamicstudies.png", description: "Diploma program!" },
   { title: "Quran", href: "/offerings/quran", emoji: "📖", imageUrl: "/images/quran.png", description: "Read & recite beautifully!" },
-  { title: "Tajweed", href: "/offerings/tajweed", emoji: "🎵", imageUrl: "/images/tajweed.png", description: "Perfect pronunciation!" },
+  { title: "Tajweed", href: "/offerings/tajweed", emoji: "🎙️", imageUrl: "/images/tajweed.png", description: "Perfect pronunciation!" },
   { title: "Learn Arabic", href: "/offerings/arabic", emoji: "✍️", imageUrl: "/images/learnarabic.png", description: "Master the language!" },
-  { title: "Hifz (Memorization)", href: "/offerings/hifz", emoji: "🧠", imageUrl: "/images/hifz.jpg", description: "Memorize the Quran!" },
-  { title: "Qaidah", href: "/offerings/qaidah", emoji: "🔤", imageUrl: "/images/qaidah.jpg", description: "Start from basics!" },
-  { title: "Naseeha", href: "/offerings/naseeha", emoji: "💚", imageUrl: "/images/naseeha.jpg", description: "Spiritual guidance!" },
-  { title: "Counselling", href: "/offerings/counselling", emoji: "🤝", imageUrl: "/images/counselling.jpg", description: "Faith-based support!" },
+  { title: "Hifz (Memorization)", href: "/offerings/hifz", emoji: "🧠", imageUrl: "/images/quran.png", description: "Memorize the Quran!" },
+  { title: "Qaidah", href: "/offerings/qaidah", emoji: "🔤", imageUrl: "/images/quran.png", description: "Start from basics!" },
+  { title: "Naseeha", href: "/offerings/naseeha", emoji: "💚", imageUrl: "/images/islamicstudies.png", description: "Spiritual guidance!" },
+  { title: "Counselling", href: "/offerings/counselling", emoji: "🤝", imageUrl: "/images/tasbeeh.png", description: "Faith-based support!" },
 ];
 
 export default function OfferingsPage() {
@@ -33,16 +33,27 @@ export default function OfferingsPage() {
             href={offering.href}
             className={idx % 3 === 0 ? "fun-box-green text-white" : idx % 3 === 1 ? "fun-box-gold text-[--brand-green-dark]" : "fun-box-white text-[--brand-green-dark]"}
           >
-            <div className="space-y-4 text-center">
-              <div className="text-7xl float">{offering.emoji}</div>
-              <h2 className="text-2xl md:text-3xl font-bold text-playful">
-                {offering.title}
-              </h2>
-              <p className="text-lg font-semibold">
-                {offering.description}
-              </p>
-              <div className="text-sm font-bold uppercase tracking-wide">
-                Click to Learn More →
+            <div className="space-y-4">
+              {/* Image */}
+              <div className="h-40 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
+                <img 
+                  src={offering.imageUrl} 
+                  alt={offering.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Content */}
+              <div className="text-center space-y-3">
+                <div className="text-6xl float">{offering.emoji}</div>
+                <h2 className="text-2xl md:text-3xl font-bold text-playful">
+                  {offering.title}
+                </h2>
+                <p className="text-lg font-semibold">
+                  {offering.description}
+                </p>
+                <div className="text-sm font-bold uppercase tracking-wide">
+                  Click to Learn More →
+                </div>
               </div>
             </div>
           </Link>
