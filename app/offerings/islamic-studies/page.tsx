@@ -9,7 +9,9 @@ export default function IslamicStudiesPage() {
   ];
 
   return (
-    <div className="py-10 space-y-12 max-w-6xl mx-auto">
+    <>
+      <div className="page-bg-image" style={{ backgroundImage: 'url(/images/islamicstudies.png)' }} />
+      <div className="py-10 space-y-12 max-w-6xl mx-auto">
       {/* 📚 HERO */}
       <div className="text-center space-y-6">
         <div className="text-7xl">📚</div>
@@ -168,6 +170,7 @@ export default function IslamicStudiesPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

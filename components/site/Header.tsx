@@ -4,11 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { useState, useEffect } from "react";
+import { BookOpen, GraduationCap, ShoppingBag, Star } from "lucide-react";
 
 const nav = [
-  { href: "/about", label: "About Us", emoji: "📖" },
-  { href: "/offerings", label: "Offerings", emoji: "🎓" },
-  { href: "/shop", label: "Shop", emoji: "🛍️" },
+  { href: "/about", label: "About Us", Icon: BookOpen },
+  { href: "/offerings", label: "Offerings", Icon: GraduationCap },
+  { href: "/shop", label: "Shop", Icon: ShoppingBag },
 ];
 
 export default function Header() {
@@ -33,13 +34,15 @@ export default function Header() {
             <img 
               src="/annurlogo.JPG" 
               alt="An‑Nur Academy" 
-              className="mx-auto h-48 w-48 md:h-56 md:w-56 rounded-3xl shadow-2xl border-8 border-[--brand-gold] bounce-on-hover" 
+              className="mx-auto h-48 w-48 md:h-56 md:w-56 rounded-3xl shadow-2xl border-4 border-[--brand-gold]/40 bounce-on-hover" 
             />
             <h1 className="mt-4 text-4xl md:text-5xl font-bold text-playful gradient-text">
               An-Nur Academy
             </h1>
-            <p className="mt-2 text-lg md:text-xl text-[--brand-green-dark] font-semibold">
-              ✨ Learn Quran, Arabic & Islam Online ✨
+            <p className="mt-2 text-lg md:text-xl text-[--brand-green-dark] font-semibold flex items-center justify-center gap-2">
+              <Star className="w-5 h-5" fill="currentColor" />
+              Learn Quran, Arabic & Islam Online
+              <Star className="w-5 h-5" fill="currentColor" />
             </p>
           </div>
         </div>
@@ -61,7 +64,7 @@ export default function Header() {
                 src="/annurlogo.JPG" 
                 alt="An‑Nur Academy" 
                 className={clsx(
-                  "rounded-xl border-4 border-[--brand-gold] shadow-lg transition-all duration-500",
+                  "rounded-xl border-2 border-[--brand-gold]/30 shadow-lg transition-all duration-500",
                   scrolled ? "h-12 w-12" : "h-16 w-16"
                 )} 
               />
@@ -84,7 +87,7 @@ export default function Header() {
                     pathname === item.href ? "text-[--brand-green]" : "text-[--brand-green-dark] hover:text-[--brand-gold]"
                   )}
                 >
-                  <span>{item.emoji}</span>
+                  <item.Icon className="w-5 h-5" strokeWidth={2.5} />
                   <span>{item.label}</span>
                 </Link>
               ))}
@@ -92,11 +95,13 @@ export default function Header() {
 
             {/* CTA Buttons - Desktop */}
             <div className="hidden md:flex items-center gap-3">
-              <Link href="/enroll" className="btn-fun-gold text-sm px-6 py-3">
-                🎓 Enroll Now
+              <Link href="/enroll" className="btn-fun-gold text-sm px-6 py-3 flex items-center gap-2">
+                <GraduationCap className="w-4 h-4" />
+                Enrol
               </Link>
-              <Link href="/assessment" className="btn-fun text-sm px-6 py-3">
-                ✨ Free Assessment
+              <Link href="/assessment" className="btn-fun text-sm px-6 py-3 flex items-center gap-2">
+                <Star className="w-4 h-4" fill="currentColor" />
+                Assessment
               </Link>
             </div>
 
@@ -132,7 +137,7 @@ export default function Header() {
                         : "bg-[--fun-bg-1] text-[--brand-green-dark] hover:bg-[--brand-gold]"
                     )}
                   >
-                    <span className="text-2xl">{item.emoji}</span>
+                    <item.Icon className="w-6 h-6" strokeWidth={2.5} />
                     <span>{item.label}</span>
                   </Link>
                 ))}
@@ -141,16 +146,18 @@ export default function Header() {
                 <Link 
                   href="/enroll" 
                   onClick={() => setMenuOpen(false)} 
-                  className="btn-fun-gold w-full text-center block"
+                  className="btn-fun-gold w-full text-center flex items-center justify-center gap-2"
                 >
-                  🎓 Enroll Now
+                  <GraduationCap className="w-5 h-5" />
+                  Enrol Now
                 </Link>
                 <Link 
                   href="/assessment" 
                   onClick={() => setMenuOpen(false)} 
-                  className="btn-fun w-full text-center block"
+                  className="btn-fun w-full text-center flex items-center justify-center gap-2"
                 >
-                  ✨ Free Assessment
+                  <Star className="w-5 h-5" fill="currentColor" />
+                  Free Assessment
                 </Link>
               </div>
             </div>

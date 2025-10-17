@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { User, Users, BookOpen, Layers, Brain, Mic2, BookMarked, Heart, Handshake, PenTool, MessageCircle, Send, CheckCircle } from "lucide-react";
 
 const schema = z.object({
   type: z.enum(["ASSESSMENT", "ENROLLMENT"]),
@@ -62,32 +63,32 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
         {/* 👤 PERSONAL INFO */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
-            <span className="text-3xl">👤</span> Your Info
+            <User className="w-8 h-8" strokeWidth={2.5} /> Your Info
           </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Full Name *</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
                 placeholder="Your name" 
                 {...register("fullName")} 
               />
-              {errors.fullName && <p className="mt-1 text-xs font-bold text-red-600">⚠️ {errors.fullName.message}</p>}
+              {errors.fullName && <p className="mt-1 text-xs font-bold text-red-600">{errors.fullName.message}</p>}
             </div>
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Email *</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
                 type="email" 
                 placeholder="your@email.com" 
                 {...register("email")} 
               />
-              {errors.email && <p className="mt-1 text-xs font-bold text-red-600">⚠️ {errors.email.message}</p>}
+              {errors.email && <p className="mt-1 text-xs font-bold text-red-600">{errors.email.message}</p>}
             </div>
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Phone</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
                 placeholder="+44..." 
                 {...register("phone")} 
               />
@@ -95,12 +96,12 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">This is for...</label>
               <select 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white cursor-pointer" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm cursor-pointer" 
                 {...register("forWhom")}
               >
                 <option value="">Please select</option>
-                <option value="self">🙋 Myself</option>
-                <option value="someone">👥 Someone else</option>
+                <option value="self">Myself</option>
+                <option value="someone">Someone else</option>
               </select>
             </div>
           </div>
@@ -109,13 +110,13 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
         {/* 👶 STUDENT INFO */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
-            <span className="text-3xl">👶</span> Student Info
+            <Users className="w-8 h-8" strokeWidth={2.5} /> Student Info
           </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Student Name (if different)</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
                 placeholder="Student's name" 
                 {...register("studentName")} 
               />
@@ -123,7 +124,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Relationship</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
                 placeholder="Parent, Guardian, etc." 
                 {...register("relationship")} 
               />
@@ -131,7 +132,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Age</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
                 type="number" 
                 placeholder="Age" 
                 {...register("age")} 
@@ -140,12 +141,12 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Gender</label>
               <select 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white cursor-pointer" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm cursor-pointer" 
                 {...register("gender")}
               >
                 <option value="">Select</option>
-                <option value="male">👨 Male</option>
-                <option value="female">👩 Female</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
               </select>
             </div>
           </div>
@@ -154,18 +155,18 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
         {/* 📚 COURSES */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
-            <span className="text-3xl">📚</span> Pick Your Courses! *
+            <BookOpen className="w-8 h-8" strokeWidth={2.5} /> Select Your Courses *
           </h3>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { name: "Qaidah", emoji: "🔤" },
-              { name: "Quran", emoji: "📖" },
-              { name: "Hifz", emoji: "🧠" },
-              { name: "Tajweed", emoji: "🎙️" },
-              { name: "Islamic Studies", emoji: "📚" },
-              { name: "Naseeha", emoji: "💚" },
-              { name: "Faith-based Counselling", emoji: "🤝" },
-              { name: "Arabic", emoji: "✍️" },
+              { name: "Qaidah", Icon: Layers },
+              { name: "Quran", Icon: BookOpen },
+              { name: "Hifz", Icon: Brain },
+              { name: "Tajweed", Icon: Mic2 },
+              { name: "Islamic Studies", Icon: BookMarked },
+              { name: "Naseeha", Icon: Heart },
+              { name: "Faith-based Counselling", Icon: Handshake },
+              { name: "Arabic", Icon: PenTool },
             ].map((c) => (
               <label key={c.name} className="option-card flex items-center gap-3 cursor-pointer bg-[--fun-bg-2]">
                 <input 
@@ -174,24 +175,24 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
                   value={c.name} 
                   {...register("courses")} 
                 />
-                <span className="text-2xl">{c.emoji}</span>
+                <c.Icon className="w-6 h-6 text-[--brand-green]" strokeWidth={2.5} />
                 <span className="text-sm font-bold text-[--brand-green-dark]">{c.name}</span>
               </label>
             ))}
           </div>
-          {errors.courses && <p className="mt-2 text-sm font-bold text-red-600">⚠️ {errors.courses.message}</p>}
+          {errors.courses && <p className="mt-2 text-sm font-bold text-red-600">{errors.courses.message}</p>}
         </div>
 
         {/* 💬 MORE INFO */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
-            <span className="text-3xl">💬</span> Tell Us More!
+            <MessageCircle className="w-8 h-8" strokeWidth={2.5} /> Tell Us More!
           </h3>
           <div className="space-y-4">
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Preferences (group/1:1, days, times, availability)</label>
               <textarea 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
                 rows={4} 
                 placeholder="Tell us your preferences..."
                 {...register("preferences")} 
@@ -200,7 +201,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Additional Comments</label>
               <textarea 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
                 rows={3} 
                 placeholder="Any questions or comments?"
                 {...register("comments")} 
@@ -209,7 +210,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">How did you hear about us?</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-4 border-[--brand-gold] p-4 text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-[--brand-green]/30 transition-all bg-white" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
                 placeholder="Social media, friend, etc." 
                 {...register("heardAbout")} 
               />
@@ -220,20 +221,33 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
         {/* 🚀 SUBMIT */}
         <div className="pt-4 space-y-4">
           <button 
-            className="btn-fun w-full text-2xl py-6" 
+            className="btn-fun w-full text-2xl py-6 flex items-center justify-center gap-3" 
             type="submit" 
             disabled={status === "submitting"}
           >
-            {status === "submitting" ? "⏳ Sending..." : "🚀 Send Message!"}
+            {status === "submitting" ? (
+              <>
+                <MessageCircle className="w-6 h-6 animate-pulse" />
+                Sending...
+              </>
+            ) : (
+              <>
+                <Send className="w-6 h-6" />
+                Send Message!
+              </>
+            )}
           </button>
           {status === "success" && (
             <div className="fun-box-green text-white text-center p-4">
-              <p className="text-xl font-bold">✅ Thank you! We&apos;ll be in touch soon! 🎉</p>
+              <p className="text-xl font-bold flex items-center justify-center gap-3 relative z-10">
+                <CheckCircle className="w-8 h-8" />
+                Thank you! We&apos;ll be in touch soon!
+              </p>
             </div>
           )}
           {status === "error" && (
             <div className="bg-red-500 text-white text-center p-4 rounded-2xl">
-              <p className="text-lg font-bold">❌ Oops! Something went wrong. Please try again!</p>
+              <p className="text-lg font-bold">Oops! Something went wrong. Please try again!</p>
             </div>
           )}
         </div>

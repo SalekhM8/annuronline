@@ -1,20 +1,26 @@
+import { ShoppingBag, BookOpen, BookMarked, Star, Package, Mail, MessageCircle } from "lucide-react";
+
 export default function ShopPage() {
   const products = [
-    { name: "Ahsanul Qawa'id", price: "£4.99", image: "/images/islamicstudies.png", emoji: "📖", description: "Learn Arabic basics!" },
-    { name: "Quran", price: "£14.99", image: "/images/quran.png", emoji: "📚", description: "Beautiful copy!" },
-    { name: "Electronic Tasbeeh", price: "£5.99", image: "/images/tasbeeh.png", emoji: "📿", description: "Count your dhikr!" },
+    { name: "Ahsanul Qawa'id", price: "£4.99", image: "/images/islamicstudies.png", Icon: BookOpen, description: "Learn Arabic basics!" },
+    { name: "Quran", price: "£14.99", image: "/images/quran.png", Icon: BookMarked, description: "Beautiful copy!" },
+    { name: "Electronic Tasbeeh", price: "£5.99", image: "/images/tasbeeh.png", Icon: Star, description: "Count your dhikr!" },
   ];
   
   return (
     <div className="py-10 space-y-12 max-w-6xl mx-auto">
       {/* 🛍️ HERO */}
       <div className="text-center space-y-6">
-        <div className="text-7xl">🛍️</div>
-        <h1 className="text-5xl md:text-6xl font-bold text-playful gradient-text">
-          Islamic Shop! 🌟
+        <div className="flex justify-center">
+          <ShoppingBag className="w-20 h-20 text-[--brand-green]" strokeWidth={2.5} />
+        </div>
+        <h1 className="text-5xl md:text-6xl font-bold text-playful gradient-text flex items-center justify-center gap-3">
+          <Star className="w-12 h-12" fill="currentColor" />
+          Islamic Shop!
         </h1>
-        <p className="text-2xl md:text-3xl text-[--brand-green-dark] font-semibold">
-          Quality Islamic Learning Materials! 📚✨
+        <p className="text-2xl md:text-3xl text-[--brand-green-dark] font-semibold flex items-center justify-center gap-2">
+          <Package className="w-8 h-8" />
+          Quality Islamic Learning Materials!
         </p>
       </div>
 
@@ -27,7 +33,7 @@ export default function ShopPage() {
           >
             <div className="space-y-4">
               {/* Image */}
-              <div className="h-48 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
+              <div className="h-48 rounded-2xl overflow-hidden border-2 border-white/60 shadow-xl">
                 <img 
                   src={product.image} 
                   alt={product.name}
@@ -35,8 +41,10 @@ export default function ShopPage() {
                 />
               </div>
               {/* Info */}
-              <div className="text-center space-y-3">
-                <div className="text-5xl">{product.emoji}</div>
+              <div className="text-center space-y-3 relative z-10">
+                <div className="flex justify-center">
+                  <product.Icon className="w-14 h-14" strokeWidth={2.5} />
+                </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-playful">
                   {product.name}
                 </h3>
@@ -47,10 +55,11 @@ export default function ShopPage() {
                   {product.price}
                 </div>
                 <a 
-                  href={`mailto:info@annur.online?subject=Shop order: ${product.name}`}
-                  className={idx % 2 === 0 ? "btn-fun-gold block w-full text-center" : "btn-fun block w-full text-center"}
+                  href={`mailto:an-nuracademy@outlook.com?subject=Shop order: ${product.name}`}
+                  className={idx % 2 === 0 ? "btn-fun-gold block w-full text-center flex items-center justify-center gap-2" : "btn-fun block w-full text-center flex items-center justify-center gap-2"}
                 >
-                  📧 Contact to Order
+                  <Mail className="w-5 h-5" />
+                  Contact to Order
                 </a>
               </div>
             </div>
@@ -60,13 +69,21 @@ export default function ShopPage() {
 
       {/* 💬 INFO BOX */}
       <div className="fun-box-white text-center space-y-4">
-        <div className="text-6xl">📦</div>
-        <h2 className="text-3xl md:text-4xl font-bold text-playful text-[--brand-green]">
-          How to Order? 🤔
+        <div className="flex justify-center relative z-10">
+          <Package className="w-16 h-16 text-[--brand-green]" strokeWidth={2.5} />
+        </div>
+        <h2 className="text-3xl md:text-4xl font-bold text-playful text-[--brand-green] flex items-center justify-center gap-2 relative z-10">
+          How to Order?
         </h2>
-        <p className="text-xl text-[--brand-green-dark] font-semibold">
-          Click &ldquo;Contact to Order&rdquo; on any product and send us an email! 📧<br />
-          We&apos;ll get back to you with delivery details! 🚀
+        <p className="text-xl text-[--brand-green-dark] font-semibold flex flex-col items-center gap-2 relative z-10">
+          <span className="flex items-center gap-2">
+            <Mail className="w-6 h-6" />
+            Click &ldquo;Contact to Order&rdquo; on any product and send us an email!
+          </span>
+          <span className="flex items-center gap-2">
+            <MessageCircle className="w-6 h-6" />
+            We&apos;ll get back to you with delivery details!
+          </span>
         </p>
       </div>
     </div>
