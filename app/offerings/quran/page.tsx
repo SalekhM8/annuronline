@@ -29,10 +29,10 @@ export default function QuranPage() {
             اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
           </div>
           <p className="text-xl md:text-2xl italic text-[--brand-green-dark] font-semibold">
-            "Read in the name of your Lord who created."
+            &ldquo;Read in the name of your Lord who created.&rdquo;
           </p>
           <p className="text-lg text-[--brand-gold-dark] font-bold">
-            (Surah Al-'Alaq, 96:1)
+            (Surah Al-&lsquo;Alaq, 96:1)
           </p>
         </div>
       </div>

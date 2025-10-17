@@ -18,7 +18,7 @@ export default function ResourcesPage() {
           🚀 Coming Soon!
         </h2>
         <p className="text-xl md:text-2xl leading-relaxed text-center">
-          We're preparing <span className="font-bold text-[--brand-gold-light]">amazing resources</span> for you! 📖
+          We&apos;re preparing <span className="font-bold text-[--brand-gold-light]">amazing resources</span> for you! 📖
         </p>
         <p className="text-xl md:text-2xl leading-relaxed text-center">
           Check back soon for <span className="font-bold text-[--brand-gold-light]">FREE downloads</span>, study guides, and learning tools! 🎓

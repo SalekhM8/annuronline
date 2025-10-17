@@ -22,7 +22,7 @@ export default function AboutPage() {
           At <span className="font-bold text-[--brand-gold-light]">An‑Nur Academy</span>, our mission is to make <span className="font-bold">Islamic education accessible to all</span>, helping students build a <span className="font-bold text-[--brand-gold-light]">strong connection with their faith</span> from anywhere in the world. 🌍
         </p>
         <p className="text-xl md:text-2xl leading-relaxed text-center">
-          We focus on nurturing <span className="font-bold text-[--brand-gold-light]">Taqwa</span> (awareness of Allah), instilling core <span className="font-bold">Islamic values</span>, and equipping learners to live their faith confidently in today's world! 💪
+          We focus on nurturing <span className="font-bold text-[--brand-gold-light]">Taqwa</span> (awareness of Allah), instilling core <span className="font-bold">Islamic values</span>, and equipping learners to live their faith confidently in today&apos;s world! 💪
         </p>
       </div>
 
@@ -66,10 +66,10 @@ export default function AboutPage() {
             اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
           </div>
           <p className="text-xl md:text-2xl italic text-[--brand-green-dark] font-semibold">
-            "Read! In the name of your Lord who created."
+            &ldquo;Read! In the name of your Lord who created.&rdquo;
           </p>
           <p className="text-lg text-[--brand-gold-dark] font-bold">
-            (Surah Al-'Alaq, 96:1)
+            (Surah Al-&lsquo;Alaq, 96:1)
           </p>
         </div>
       </div>
@@ -81,7 +81,7 @@ export default function AboutPage() {
             🎓 Since 2020!
           </h2>
           <p className="text-xl md:text-2xl leading-relaxed">
-            We've offered <span className="font-bold text-[--brand-gold-light]">flexible, high-quality</span> online courses led by experienced <span className="font-bold text-[--brand-gold-light]">Scholars and Huffaaz</span>. 👨‍🏫
+            We&apos;ve offered <span className="font-bold text-[--brand-gold-light]">flexible, high-quality</span> online courses led by experienced <span className="font-bold text-[--brand-gold-light]">Scholars and Huffaaz</span>. 👨‍🏫
           </p>
           <p className="text-xl md:text-2xl leading-relaxed">
             From foundational <span className="font-bold text-[--brand-gold-light]">Qaidah</span> and <span className="font-bold text-[--brand-gold-light]">Quran</span> lessons to advanced <span className="font-bold text-[--brand-gold-light]">Hifdh</span> and <span className="font-bold text-[--brand-gold-light]">Islamic Studies</span>, our curriculum serves students of <span className="font-bold text-[--brand-gold-light]">all ages and levels!</span> 👶👧🧒👨👴

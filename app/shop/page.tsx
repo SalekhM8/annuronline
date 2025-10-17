@@ -65,8 +65,8 @@ export default function ShopPage() {
           How to Order? 🤔
         </h2>
         <p className="text-xl text-[--brand-green-dark] font-semibold">
-          Click "Contact to Order" on any product and send us an email! 📧<br />
-          We'll get back to you with delivery details! 🚀
+          Click &ldquo;Contact to Order&rdquo; on any product and send us an email! 📧<br />
+          We&apos;ll get back to you with delivery details! 🚀
         </p>
       </div>
     </div>

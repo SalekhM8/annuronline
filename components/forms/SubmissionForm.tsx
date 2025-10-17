@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,13 +38,6 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
     defaultValues: { type, courses: [] },
   });
 
-  const onPointer = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
-    const el = e.currentTarget;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty("--x", `${e.clientX - rect.left}px`);
-    el.style.setProperty("--y", `${e.clientY - rect.top}px`);
-  }, []);
-
   async function onSubmit(values: SubmissionValues) {
     setStatus("submitting");
     try {
@@ -56,7 +49,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
       reset({ type, courses: [] });
-    } catch (e) {
+    } catch {
       setStatus("error");
     }
   }
@@ -235,7 +228,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
           </button>
           {status === "success" && (
             <div className="fun-box-green text-white text-center p-4">
-              <p className="text-xl font-bold">✅ Thank you! We'll be in touch soon! 🎉</p>
+              <p className="text-xl font-bold">✅ Thank you! We&apos;ll be in touch soon! 🎉</p>
             </div>
           )}
           {status === "error" && (

@@ -20,7 +20,7 @@ export default function EnrollPage() {
           🌟 Ready to Begin?
         </h2>
         <p className="text-xl leading-relaxed text-[--brand-green-dark]">
-          Fill in your details and we'll get you started on your <span className="font-bold text-[--brand-green]">Islamic learning journey!</span> 🎯
+          Fill in your details and we&apos;ll get you started on your <span className="font-bold text-[--brand-green]">Islamic learning journey!</span> 🎯
         </p>
       </div>
 

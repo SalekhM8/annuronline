@@ -28,7 +28,7 @@ export default function TajweedPage() {
             وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا
           </div>
           <p className="text-xl md:text-2xl italic text-[--brand-green-dark] font-semibold">
-            "And recite the Qur'an with measured recitation."
+            &ldquo;And recite the Qur&apos;an with measured recitation.&rdquo;
           </p>
           <p className="text-lg text-[--brand-gold-dark] font-bold">
             (Surah Al-Muzzammil, 73:4)
@@ -101,7 +101,7 @@ export default function TajweedPage() {
       {/* ⭐ CURRICULUM HIGHLIGHT */}
       <div className="fun-box-white space-y-8">
         <h2 className="text-4xl md:text-5xl font-bold text-playful text-center gradient-text">
-          What You'll Learn! 📚
+          What You&apos;ll Learn! 📚
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center space-y-4">

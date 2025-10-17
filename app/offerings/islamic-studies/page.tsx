@@ -26,8 +26,8 @@ export default function IslamicStudiesPage() {
         <div className="text-center space-y-4">
           <div className="text-6xl">💫</div>
           <p className="text-xl md:text-2xl italic text-[--brand-green-dark] font-semibold">
-            "And whoever takes a path upon which to obtain knowledge,<br />
-            Allah makes the path to Paradise easy for him."
+            &ldquo;And whoever takes a path upon which to obtain knowledge,<br />
+            Allah makes the path to Paradise easy for him.&rdquo;
           </p>
           <p className="text-lg text-[--brand-gold-dark] font-bold">
             (Sunan Ibn Majah, 223)
@@ -96,7 +96,7 @@ export default function IslamicStudiesPage() {
       {/* 📚 AREAS OF STUDY */}
       <div className="space-y-8">
         <h2 className="text-4xl md:text-5xl font-bold text-playful text-center gradient-text">
-          What You'll Study! 📖
+          What You&apos;ll Study! 📖
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {subjects.map((subject, idx) => (
@@ -123,7 +123,7 @@ export default function IslamicStudiesPage() {
       {/* 🎓 PROGRAM BENEFITS */}
       <div className="fun-box-white space-y-8">
         <h2 className="text-4xl md:text-5xl font-bold text-playful text-center gradient-text">
-          What You'll Gain! 🌟
+          What You&apos;ll Gain! 🌟
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center space-y-4">

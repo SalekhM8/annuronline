@@ -29,7 +29,7 @@ export default function ArabicPage() {
             إِنَّا أَنزَلْنَاهُ قُرْآنًا عَرَبِيًّا لَّعَلَّكُمْ تَعْقِلُونَ
           </div>
           <p className="text-xl md:text-2xl italic text-[--brand-green-dark] font-semibold">
-            "Indeed, We have sent it down as an Arabic Qur'an<br />that you might understand."
+            &ldquo;Indeed, We have sent it down as an Arabic Qur&apos;an<br />that you might understand.&rdquo;
           </p>
           <p className="text-lg text-[--brand-gold-dark] font-bold">
             (Surah Yusuf, 12:2)
@@ -78,7 +78,7 @@ export default function ArabicPage() {
           </div>
         </div>
         <p className="text-2xl text-center text-[--brand-green-dark] font-bold pt-4">
-          From <span className="text-[--brand-green]">basics</span> to <span className="text-[--brand-green]">advanced grammar!</span> 🚀
+          From <span className="text-[--brand-green]">basics</span> to <span className="text-[--brand-green]">advanced grammar</span>! 🚀
         </p>
       </div>
 
@@ -88,7 +88,7 @@ export default function ArabicPage() {
           Pick Your Perfect Level! 📊
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {courses.map((course, idx) => (
+          {courses.map((course) => (
             <div 
               key={course.title}
               className="fun-card"
@@ -115,7 +115,7 @@ export default function ArabicPage() {
       {/* 💡 BENEFITS */}
       <div className="fun-box-white space-y-8">
         <h2 className="text-4xl md:text-5xl font-bold text-playful text-center gradient-text">
-          What You'll Gain! 💪
+          What You&apos;ll Gain! 💪
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center space-y-4">
@@ -148,7 +148,7 @@ export default function ArabicPage() {
           Start Learning Arabic Today! 🚀
         </h2>
         <p className="text-xl text-[--brand-green-dark] font-semibold">
-          From alphabet to fluency - we'll guide you all the way! ✨
+          From alphabet to fluency - we&apos;ll guide you all the way! ✨
         </p>
         <div className="flex flex-wrap justify-center gap-6">
           <Link href="/assessment" className="btn-fun text-xl px-10 py-5">
