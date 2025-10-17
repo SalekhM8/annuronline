@@ -19,7 +19,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -27,14 +27,19 @@ export default function Header() {
 
   return (
     <>
-      {/* 🌟 LARGE LOGO HERO - Only on homepage and when not scrolled */}
-      {pathname === "/" && !scrolled && (
-        <div className="flex justify-center pt-8 pb-4 transition-all duration-500">
-          <div className="text-center float">
+      {/* 🌟 LARGE LOGO HERO - Only on homepage with smooth fade */}
+      {pathname === "/" && (
+        <div 
+          className={clsx(
+            "flex justify-center pt-8 pb-4 transition-all duration-700 ease-out",
+            scrolled ? "opacity-0 -translate-y-8 pointer-events-none h-0 overflow-hidden" : "opacity-100 translate-y-0"
+          )}
+        >
+          <div className="text-center">
             <img 
               src="/annurlogo.JPG" 
               alt="An‑Nur Academy" 
-              className="mx-auto h-48 w-48 md:h-56 md:w-56 rounded-3xl shadow-2xl border-4 border-[--brand-gold]/40 bounce-on-hover" 
+              className="mx-auto h-48 w-48 md:h-56 md:w-56 rounded-3xl shadow-2xl border-4 border-[--brand-gold]/40" 
             />
             <h1 className="mt-4 text-4xl md:text-5xl font-bold text-playful gradient-text">
               An-Nur Academy
@@ -48,11 +53,21 @@ export default function Header() {
         </div>
       )}
 
-      {/* 🎨 STICKY NAVBAR */}
+      {/* 🎨 STICKY NAVBAR - GLASS MORPHISM */}
       <header className={clsx(
-        "sticky top-0 z-50 transition-all duration-500",
-        scrolled ? "bg-white shadow-2xl border-b-4 border-[--brand-gold]" : "bg-transparent"
-      )}>
+        "sticky top-0 z-50 transition-all duration-700 ease-out",
+        scrolled 
+          ? "shadow-2xl border-b border-[--brand-gold]/30" 
+          : "border-b border-transparent"
+      )}
+        style={{
+          background: scrolled 
+            ? 'linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75))'
+            : 'linear-gradient(145deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4))',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+        }}
+      >
         <div className="container-px mx-auto">
           <div className={clsx(
             "flex items-center justify-between transition-all duration-500",
@@ -108,11 +123,16 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button 
               onClick={() => setMenuOpen((v) => !v)} 
-              className="md:hidden text-4xl cursor-pointer transition-transform hover:scale-110"
+              className="md:hidden px-4 py-2 rounded-xl cursor-pointer transition-all hover:scale-105 text-[--brand-green] font-bold text-2xl"
+              style={{
+                background: 'rgba(255,255,255,0.8)',
+                border: '1px solid rgba(0, 168, 107, 0.3)',
+                backdropFilter: 'blur(10px)',
+              }}
               aria-label="Open menu" 
               aria-expanded={menuOpen}
             >
-              {menuOpen ? "✖️" : "☰"}
+              {menuOpen ? "✕" : "☰"}
             </button>
           </div>
         </div>
@@ -121,7 +141,12 @@ export default function Header() {
         {menuOpen && (
           <div className="md:hidden fixed inset-0 z-50 bg-black/60" onClick={() => setMenuOpen(false)}>
             <div 
-              className="absolute top-20 right-4 left-4 fun-box-white p-6 max-w-sm mx-auto"
+              className="absolute top-20 right-4 left-4 p-6 max-w-sm mx-auto rounded-3xl shadow-2xl border border-white/40"
+              style={{
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))',
+                backdropFilter: 'blur(20px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               <nav className="space-y-3">

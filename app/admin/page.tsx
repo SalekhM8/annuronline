@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Lock, Star } from "lucide-react";
 
 type Submission = {
   id: string;
@@ -46,38 +47,73 @@ export default function AdminPage() {
 
   if (!authed) {
     return (
-      <div className="py-10">
-        <h1 className="text-3xl font-semibold">Admin</h1>
-        <form className="mt-6 max-w-sm space-y-3" onSubmit={login}>
-          <input className="w-full rounded-full border border-[--brand-gold]/30 p-3 ring-1 ring-[--brand-gold]/30 focus:outline-none focus:ring-[--brand-gold]" style={{ background: 'color-mix(in oklab, var(--brand-green), white 92%)' }} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          {loginError && <p className="text-sm text-red-600">{loginError}</p>}
-          <button className="btn-primary">Enter</button>
-        </form>
+      <div className="py-10 max-w-md mx-auto">
+        <div className="fun-box-white space-y-6">
+          <h1 className="text-3xl font-bold text-playful gradient-text flex items-center justify-center gap-3">
+            <Lock className="w-10 h-10" />
+            Admin Login
+          </h1>
+          <form className="space-y-4" onSubmit={login}>
+            <input 
+              className="w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm" 
+              style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }}
+              type="password" 
+              placeholder="Password" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+            />
+            {loginError && <p className="text-sm text-red-600 font-semibold">{loginError}</p>}
+            <button className="btn-fun w-full flex items-center justify-center gap-2">
+              <Lock className="w-5 h-5" />
+              Enter
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="py-10">
-      <h1 className="text-3xl font-semibold">Submissions</h1>
+    <div className="py-10 max-w-6xl mx-auto">
+      <h1 className="text-4xl font-bold text-playful gradient-text flex items-center justify-center gap-3 mb-8">
+        <Star className="w-12 h-12" fill="currentColor" />
+        Submissions
+      </h1>
       <div className="mt-6 grid grid-cols-1 gap-4">
         {submissions.map((s) => (
-          <button key={s.id} className="rounded-2xl bg-white/90 p-4 text-left shadow-sm ring-1 ring-[--brand-gold]/20 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-[--brand-gold]/40 cursor-pointer" onClick={() => setSelected(s)}>
+          <button 
+            key={s.id} 
+            className="rounded-2xl p-6 text-left shadow-lg border border-white/40 transition-all hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+            style={{
+              background: 'linear-gradient(145deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5))',
+              backdropFilter: 'blur(20px) saturate(180%)',
+            }}
+            onClick={() => setSelected(s)}
+          >
             <div className="flex items-center justify-between">
-              <div className="font-medium">{s.fullName}</div>
-              <div className="text-xs text-neutral-600">{new Date(s.createdAt).toLocaleString()}</div>
+              <div className="font-bold text-lg text-[--brand-green]">{s.fullName}</div>
+              <div className="text-xs text-neutral-600 font-semibold">{new Date(s.createdAt).toLocaleString()}</div>
             </div>
-            <div className="mt-1 text-sm text-neutral-700">{s.email} — {s.type} — {s.courses}</div>
+            <div className="mt-2 text-sm text-[--brand-green-dark] font-semibold">{s.email} — {s.type} — {s.courses}</div>
           </button>
         ))}
       </div>
 
       {selected && (
-        <dialog open className="fixed inset-0 z-50 bg-black/40 p-4">
-          <div className="mx-auto max-w-2xl rounded-2xl bg-white/90 p-6 shadow-xl ring-1 ring-[--brand-gold]/40 backdrop-blur">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold">Submission Detail</h3>
-              <button className="btn-secondary" onClick={() => setSelected(null)}>Close</button>
+        <dialog open className="fixed inset-0 z-50 bg-black/50 p-4 backdrop-blur-sm">
+          <div 
+            className="mx-auto max-w-2xl rounded-3xl p-8 shadow-2xl border border-white/40"
+            style={{
+              background: 'linear-gradient(145deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))',
+              backdropFilter: 'blur(20px) saturate(180%)',
+            }}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold text-playful gradient-text">Submission Details</h3>
+              <button className="btn-fun-gold flex items-center gap-2" onClick={() => setSelected(null)}>
+                <Star className="w-4 h-4" fill="currentColor" />
+                Close
+              </button>
             </div>
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
               <Detail label="Type" value={selected.type} />
@@ -91,10 +127,19 @@ export default function AdminPage() {
               {selected.age !== undefined && <Detail label="Age" value={String(selected.age)} />}
               {selected.gender && <Detail label="Gender" value={selected.gender} />}
               <div className="col-span-1 sm:col-span-2">
-                <div className="text-xs font-semibold text-neutral-700">Courses</div>
+                <div className="text-xs font-bold text-[--brand-green]">Courses</div>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {selected.courses.split(",").map((c) => (
-                    <span key={c} className="rounded-full border border-[--brand-gold]/30 bg-gold-soft px-3 py-1 text-xs">{c.trim()}</span>
+                    <span 
+                      key={c} 
+                      className="rounded-full border border-[--brand-gold]/40 px-4 py-2 text-xs font-bold text-[--brand-green-dark] shadow-sm"
+                      style={{
+                        background: 'linear-gradient(145deg, rgba(253,185,39,0.2), rgba(253,185,39,0.1))',
+                        backdropFilter: 'blur(10px)',
+                      }}
+                    >
+                      {c.trim()}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -111,18 +156,30 @@ export default function AdminPage() {
 
 function Detail({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-[--brand-gold]/30 bg-white/80 p-3 ring-1 ring-[--brand-gold]/20">
-      <div className="text-xs font-semibold text-neutral-700">{label}</div>
-      <div className="text-sm">{value}</div>
+    <div 
+      className="rounded-xl border border-white/40 p-4 shadow-sm"
+      style={{
+        background: 'linear-gradient(145deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4))',
+        backdropFilter: 'blur(10px) saturate(180%)',
+      }}
+    >
+      <div className="text-xs font-bold text-[--brand-green]">{label}</div>
+      <div className="text-sm font-semibold text-[--brand-green-dark] mt-1">{value}</div>
     </div>
   );
 }
 
 function DetailWide({ label, value }: { label: string; value: string }) {
   return (
-    <div className="col-span-1 sm:col-span-2 rounded-xl border border-[--brand-gold]/30 bg-white/80 p-3 ring-1 ring-[--brand-gold]/20">
-      <div className="text-xs font-semibold text-neutral-700">{label}</div>
-      <div className="text-sm whitespace-pre-wrap">{value}</div>
+    <div 
+      className="col-span-1 sm:col-span-2 rounded-xl border border-white/40 p-4 shadow-sm"
+      style={{
+        background: 'linear-gradient(145deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4))',
+        backdropFilter: 'blur(10px) saturate(180%)',
+      }}
+    >
+      <div className="text-xs font-bold text-[--brand-green]">{label}</div>
+      <div className="text-sm font-semibold text-[--brand-green-dark] mt-1 whitespace-pre-wrap">{value}</div>
     </div>
   );
 }

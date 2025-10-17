@@ -40,7 +40,7 @@ export default function OfferingsPage() {
           >
             <div className="space-y-4">
               {/* Image */}
-                <div className="h-40 rounded-2xl overflow-hidden border-2 border-white/60 shadow-xl">
+                <div className="h-40 rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/40">
                 <img 
                   src={offering.imageUrl} 
                   alt={offering.title}

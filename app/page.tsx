@@ -39,7 +39,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative">
-            <div className="relative h-80 md:h-96 rounded-3xl overflow-hidden border-2 border-[--brand-green]/30 shadow-2xl">
+            <div className="relative h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/30">
               <img 
                 src="/images/mainheroannur.png" 
                 alt="Islamic Learning" 
@@ -123,7 +123,7 @@ export default function Home() {
             >
               <div className="space-y-4">
                 {/* Image at top */}
-                <div className="h-48 rounded-2xl overflow-hidden border-2 border-white/60 shadow-xl">
+                <div className="h-48 rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/40">
                   <img 
                     src={course.imageUrl} 
                     alt={course.title}

@@ -69,7 +69,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Full Name *</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
+                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
                 placeholder="Your name" 
                 {...register("fullName")} 
               />
@@ -78,7 +79,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Email *</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
+                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
                 type="email" 
                 placeholder="your@email.com" 
                 {...register("email")} 
@@ -88,7 +90,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Phone</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
+                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
                 placeholder="+44..." 
                 {...register("phone")} 
               />
@@ -116,7 +119,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Student Name (if different)</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
+                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
                 placeholder="Student's name" 
                 {...register("studentName")} 
               />
@@ -124,7 +128,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Relationship</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
+                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
                 placeholder="Parent, Guardian, etc." 
                 {...register("relationship")} 
               />
@@ -132,7 +137,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Age</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
+                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
                 type="number" 
                 placeholder="Age" 
                 {...register("age")} 
@@ -192,7 +198,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Preferences (group/1:1, days, times, availability)</label>
               <textarea 
-                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
+                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
                 rows={4} 
                 placeholder="Tell us your preferences..."
                 {...register("preferences")} 
@@ -201,7 +208,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">Additional Comments</label>
               <textarea 
-                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
+                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
                 rows={3} 
                 placeholder="Any questions or comments?"
                 {...register("comments")} 
@@ -210,7 +218,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
             <div>
               <label className="text-sm font-bold text-[--brand-green-dark]">How did you hear about us?</label>
               <input 
-                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm" 
+                className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
+                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
                 placeholder="Social media, friend, etc." 
                 {...register("heardAbout")} 
               />

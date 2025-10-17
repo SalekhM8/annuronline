@@ -3,7 +3,14 @@ import { BookOpen, GraduationCap, Package, Lock, Star, Instagram, Facebook, Yout
 
 export default function Footer() {
   return (
-    <footer className="mt-24 bg-white border-t-8 border-[--brand-gold]">
+    <footer 
+      className="mt-24 border-t border-[--brand-gold]/30 shadow-2xl"
+      style={{
+        background: 'linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75))',
+        backdropFilter: 'blur(20px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+      }}
+    >
       <div className="container-px mx-auto py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* BRAND */}

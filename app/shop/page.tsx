@@ -33,7 +33,7 @@ export default function ShopPage() {
           >
             <div className="space-y-4">
               {/* Image */}
-              <div className="h-48 rounded-2xl overflow-hidden border-2 border-white/60 shadow-xl">
+              <div className="h-48 rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/40">
                 <img 
                   src={product.image} 
                   alt={product.name}
