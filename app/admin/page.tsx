@@ -91,10 +91,10 @@ export default function AdminPage() {
             onClick={() => setSelected(s)}
           >
             <div className="flex items-center justify-between">
-              <div className="font-bold text-lg text-[--brand-green]">{s.fullName}</div>
+              <div className="font-bold text-lg text-brand-green">{s.fullName}</div>
               <div className="text-xs text-neutral-600 font-semibold">{new Date(s.createdAt).toLocaleString()}</div>
             </div>
-            <div className="mt-2 text-sm text-[--brand-green-dark] font-semibold">{s.email} — {s.type} — {s.courses}</div>
+            <div className="mt-2 text-sm text-brand-green-dark font-semibold">{s.email} — {s.type} — {s.courses}</div>
           </button>
         ))}
       </div>
@@ -127,12 +127,12 @@ export default function AdminPage() {
               {selected.age !== undefined && <Detail label="Age" value={String(selected.age)} />}
               {selected.gender && <Detail label="Gender" value={selected.gender} />}
               <div className="col-span-1 sm:col-span-2">
-                <div className="text-xs font-bold text-[--brand-green]">Courses</div>
+                <div className="text-xs font-bold text-brand-green">Courses</div>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {selected.courses.split(",").map((c) => (
                     <span 
                       key={c} 
-                      className="rounded-full border border-[--brand-gold]/40 px-4 py-2 text-xs font-bold text-[--brand-green-dark] shadow-sm"
+                      className="rounded-full border border-[--brand-gold]/40 px-4 py-2 text-xs font-bold text-brand-green-dark shadow-sm"
                       style={{
                         background: 'linear-gradient(145deg, rgba(253,185,39,0.2), rgba(253,185,39,0.1))',
                         backdropFilter: 'blur(10px)',
@@ -163,8 +163,8 @@ function Detail({ label, value }: { label: string; value: string }) {
         backdropFilter: 'blur(10px) saturate(180%)',
       }}
     >
-      <div className="text-xs font-bold text-[--brand-green]">{label}</div>
-      <div className="text-sm font-semibold text-[--brand-green-dark] mt-1">{value}</div>
+      <div className="text-xs font-bold text-brand-green">{label}</div>
+      <div className="text-sm font-semibold text-brand-green-dark mt-1">{value}</div>
     </div>
   );
 }
@@ -178,8 +178,8 @@ function DetailWide({ label, value }: { label: string; value: string }) {
         backdropFilter: 'blur(10px) saturate(180%)',
       }}
     >
-      <div className="text-xs font-bold text-[--brand-green]">{label}</div>
-      <div className="text-sm font-semibold text-[--brand-green-dark] mt-1 whitespace-pre-wrap">{value}</div>
+      <div className="text-xs font-bold text-brand-green">{label}</div>
+      <div className="text-sm font-semibold text-brand-green-dark mt-1 whitespace-pre-wrap">{value}</div>
     </div>
   );
 }

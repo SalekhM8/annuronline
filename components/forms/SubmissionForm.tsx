@@ -62,12 +62,12 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
         
         {/* 👤 PERSONAL INFO */}
         <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
+          <h3 className="text-2xl font-bold text-playful text-brand-green flex items-center gap-2">
             <User className="w-8 h-8" strokeWidth={2.5} /> Your Info
           </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">Full Name *</label>
+              <label className="text-sm font-bold text-brand-green-dark">Full Name *</label>
               <input 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
                 style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
@@ -77,7 +77,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
               {errors.fullName && <p className="mt-1 text-xs font-bold text-red-600">{errors.fullName.message}</p>}
             </div>
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">Email *</label>
+              <label className="text-sm font-bold text-brand-green-dark">Email *</label>
               <input 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
                 style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
@@ -88,7 +88,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
               {errors.email && <p className="mt-1 text-xs font-bold text-red-600">{errors.email.message}</p>}
             </div>
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">Phone</label>
+              <label className="text-sm font-bold text-brand-green-dark">Phone</label>
               <input 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
                 style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
@@ -97,7 +97,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
               />
             </div>
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">This is for...</label>
+              <label className="text-sm font-bold text-brand-green-dark">This is for...</label>
               <select 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm cursor-pointer" 
                 {...register("forWhom")}
@@ -112,12 +112,12 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
 
         {/* 👶 STUDENT INFO */}
         <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
+          <h3 className="text-2xl font-bold text-playful text-brand-green flex items-center gap-2">
             <Users className="w-8 h-8" strokeWidth={2.5} /> Student Info
           </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">Student Name (if different)</label>
+              <label className="text-sm font-bold text-brand-green-dark">Student Name (if different)</label>
               <input 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
                 style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
@@ -126,7 +126,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
               />
             </div>
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">Relationship</label>
+              <label className="text-sm font-bold text-brand-green-dark">Relationship</label>
               <input 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
                 style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
@@ -135,7 +135,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
               />
             </div>
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">Age</label>
+              <label className="text-sm font-bold text-brand-green-dark">Age</label>
               <input 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
                 style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
@@ -145,7 +145,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
               />
             </div>
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">Gender</label>
+              <label className="text-sm font-bold text-brand-green-dark">Gender</label>
               <select 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all bg-white shadow-sm cursor-pointer" 
                 {...register("gender")}
@@ -160,7 +160,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
 
         {/* 📚 COURSES */}
         <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
+          <h3 className="text-2xl font-bold text-playful text-brand-green flex items-center gap-2">
             <BookOpen className="w-8 h-8" strokeWidth={2.5} /> Select Your Courses *
           </h3>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -181,8 +181,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
                   value={c.name} 
                   {...register("courses")} 
                 />
-                <c.Icon className="w-6 h-6 text-[--brand-green]" strokeWidth={2.5} />
-                <span className="text-sm font-bold text-[--brand-green-dark]">{c.name}</span>
+                <c.Icon className="w-6 h-6 text-brand-green" strokeWidth={2.5} />
+                <span className="text-sm font-bold text-brand-green-dark">{c.name}</span>
               </label>
             ))}
           </div>
@@ -191,12 +191,12 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
 
         {/* 💬 MORE INFO */}
         <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-playful text-[--brand-green] flex items-center gap-2">
+          <h3 className="text-2xl font-bold text-playful text-brand-green flex items-center gap-2">
             <MessageCircle className="w-8 h-8" strokeWidth={2.5} /> Tell Us More!
           </h3>
           <div className="space-y-4">
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">Preferences (group/1:1, days, times, availability)</label>
+              <label className="text-sm font-bold text-brand-green-dark">Preferences (group/1:1, days, times, availability)</label>
               <textarea 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
                 style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
@@ -206,7 +206,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
               />
             </div>
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">Additional Comments</label>
+              <label className="text-sm font-bold text-brand-green-dark">Additional Comments</label>
               <textarea 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
                 style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
@@ -216,7 +216,7 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
               />
             </div>
             <div>
-              <label className="text-sm font-bold text-[--brand-green-dark]">How did you hear about us?</label>
+              <label className="text-sm font-bold text-brand-green-dark">How did you hear about us?</label>
               <input 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
                 style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 

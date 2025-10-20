@@ -27,14 +27,9 @@ export default function Header() {
 
   return (
     <>
-      {/* 🌟 LARGE LOGO HERO - Only on homepage with smooth fade */}
+      {/* 🌟 LARGE LOGO HERO - Only on homepage, always visible */}
       {pathname === "/" && (
-        <div 
-          className={clsx(
-            "flex justify-center pt-8 pb-4 transition-all duration-700 ease-out",
-            scrolled ? "opacity-0 -translate-y-8 pointer-events-none h-0 overflow-hidden" : "opacity-100 translate-y-0"
-          )}
-        >
+        <div className="flex justify-center pt-8 pb-4">
           <div className="text-center">
             <img 
               src="/annurlogo.JPG" 
@@ -44,10 +39,10 @@ export default function Header() {
             <h1 className="mt-4 text-4xl md:text-5xl font-bold text-playful gradient-text">
               An-Nur Academy
             </h1>
-            <p className="mt-2 text-lg md:text-xl text-[--brand-green-dark] font-semibold flex items-center justify-center gap-2">
-              <Star className="w-5 h-5" fill="currentColor" />
+            <p className="mt-2 text-lg md:text-xl text-brand-green-dark font-semibold flex items-center justify-center gap-2">
+              <Star className="w-5 h-5 text-brand-gold" fill="currentColor" />
               Learn Quran, Arabic & Islam Online
-              <Star className="w-5 h-5" fill="currentColor" />
+              <Star className="w-5 h-5 text-brand-gold" fill="currentColor" />
             </p>
           </div>
         </div>
@@ -99,7 +94,7 @@ export default function Header() {
                   href={item.href} 
                   className={clsx(
                     "text-lg font-bold text-playful transition-all duration-300 hover:scale-110 flex items-center gap-2",
-                    pathname === item.href ? "text-[--brand-green]" : "text-[--brand-green-dark] hover:text-[--brand-gold]"
+                    pathname === item.href ? "text-brand-green" : "text-brand-green-dark hover:text-brand-gold"
                   )}
                 >
                   <item.Icon className="w-5 h-5" strokeWidth={2.5} />
@@ -111,11 +106,11 @@ export default function Header() {
             {/* CTA Buttons - Desktop */}
             <div className="hidden md:flex items-center gap-3">
               <Link href="/enroll" className="btn-fun-gold text-sm px-6 py-3 flex items-center gap-2">
-                <GraduationCap className="w-4 h-4" />
+                <GraduationCap className="w-4 h-4 text-brand-green-dark" />
                 Enrol
               </Link>
               <Link href="/assessment" className="btn-fun text-sm px-6 py-3 flex items-center gap-2">
-                <Star className="w-4 h-4" fill="currentColor" />
+                <Star className="w-4 h-4 text-white" fill="currentColor" />
                 Assessment
               </Link>
             </div>
@@ -123,7 +118,7 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button 
               onClick={() => setMenuOpen((v) => !v)} 
-              className="md:hidden px-4 py-2 rounded-xl cursor-pointer transition-all hover:scale-105 text-[--brand-green] font-bold text-2xl"
+              className="md:hidden px-4 py-2 rounded-xl cursor-pointer transition-all hover:scale-105 text-brand-green font-bold text-2xl"
               style={{
                 background: 'rgba(255,255,255,0.8)',
                 border: '1px solid rgba(0, 168, 107, 0.3)',
@@ -159,7 +154,7 @@ export default function Header() {
                       "flex items-center gap-3 rounded-2xl px-5 py-4 text-lg font-bold text-playful transition-all hover:scale-105",
                       pathname === item.href 
                         ? "bg-[--brand-green] text-white" 
-                        : "bg-[--fun-bg-1] text-[--brand-green-dark] hover:bg-[--brand-gold]"
+                        : "bg-[--fun-bg-1] text-brand-green-dark hover:bg-[--brand-gold]"
                     )}
                   >
                     <item.Icon className="w-6 h-6" strokeWidth={2.5} />
@@ -173,7 +168,7 @@ export default function Header() {
                   onClick={() => setMenuOpen(false)} 
                   className="btn-fun-gold w-full text-center flex items-center justify-center gap-2"
                 >
-                  <GraduationCap className="w-5 h-5" />
+                  <GraduationCap className="w-5 h-5 text-brand-green-dark" />
                   Enrol Now
                 </Link>
                 <Link 
@@ -181,7 +176,7 @@ export default function Header() {
                   onClick={() => setMenuOpen(false)} 
                   className="btn-fun w-full text-center flex items-center justify-center gap-2"
                 >
-                  <Star className="w-5 h-5" fill="currentColor" />
+                  <Star className="w-5 h-5 text-white" fill="currentColor" />
                   Free Assessment
                 </Link>
               </div>

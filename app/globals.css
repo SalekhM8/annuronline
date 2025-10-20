@@ -30,6 +30,12 @@
   --color-foreground: var(--foreground);
   --color-brand: var(--brand-green);
   --color-gold: var(--brand-gold);
+  --color-brand-green: #00a86b;
+  --color-brand-green-light: #4cd964;
+  --color-brand-green-dark: #006241;
+  --color-brand-gold: #fdb927;
+  --color-brand-gold-light: #ffdf3c;
+  --color-brand-gold-dark: #d4941d;
 }
 
 /* 🌈 ANIMATED BACKGROUND */
@@ -195,6 +201,11 @@ body {
   pointer-events: none;
 }
 
+/* Make all icons in green buttons white */
+.btn-fun svg {
+  color: white !important;
+}
+
 .btn-fun:hover {
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 12px 30px var(--shadow-color);
@@ -229,6 +240,11 @@ body {
   background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%);
   border-radius: 9999px;
   pointer-events: none;
+}
+
+/* Make all icons in gold buttons green-dark */
+.btn-fun-gold svg {
+  color: var(--brand-green-dark) !important;
 }
 
 .btn-fun-gold:hover {

@@ -18,13 +18,13 @@ export default function OfferingsPage() {
       {/* 🎓 HERO */}
       <div className="text-center space-y-6">
         <div className="flex justify-center">
-          <GraduationCap className="w-20 h-20 md:w-24 md:h-24 text-[--brand-green]" strokeWidth={2.5} />
+          <GraduationCap className="w-20 h-20 md:w-24 md:h-24 text-brand-green" strokeWidth={2.5} />
         </div>
         <h1 className="text-5xl md:text-6xl font-bold text-playful gradient-text flex items-center justify-center gap-3 flex-wrap">
           <Star className="w-12 h-12" fill="currentColor" />
           All Our Courses
         </h1>
-        <p className="text-2xl md:text-3xl text-[--brand-green-dark] font-semibold flex items-center justify-center gap-2">
+        <p className="text-2xl md:text-3xl text-brand-green-dark font-semibold flex items-center justify-center gap-2">
           <Target className="w-8 h-8" />
           Choose what you&apos;d like to learn
         </p>
@@ -36,7 +36,7 @@ export default function OfferingsPage() {
           <Link 
             key={offering.href}
             href={offering.href}
-            className={idx % 3 === 0 ? "fun-box-green text-white" : idx % 3 === 1 ? "fun-box-gold text-[--brand-green-dark]" : "fun-box-white text-[--brand-green-dark]"}
+            className={idx % 3 === 0 ? "fun-box-green text-white" : idx % 3 === 1 ? "fun-box-gold text-brand-green-dark" : "fun-box-white text-brand-green-dark"}
           >
             <div className="space-y-4">
               {/* Image */}
@@ -69,11 +69,11 @@ export default function OfferingsPage() {
 
       {/* 🚀 CTA */}
       <div className="fun-box-gold text-center space-y-8 py-10">
-        <h2 className="text-4xl md:text-5xl font-bold text-playful text-[--brand-green-dark] flex items-center justify-center gap-3 relative z-10">
+        <h2 className="text-4xl md:text-5xl font-bold text-playful text-brand-green-dark flex items-center justify-center gap-3 relative z-10">
           <Star className="w-12 h-12" fill="currentColor" />
           Ready to Start?
         </h2>
-        <p className="text-xl text-[--brand-green-dark] font-semibold flex items-center justify-center gap-2 relative z-10">
+        <p className="text-xl text-brand-green-dark font-semibold flex items-center justify-center gap-2 relative z-10">
           <Target className="w-6 h-6" />
           Not sure which course? Get a free assessment
         </p>

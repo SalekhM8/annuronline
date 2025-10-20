@@ -12,13 +12,13 @@ export default function ShopPage() {
       {/* 🛍️ HERO */}
       <div className="text-center space-y-6">
         <div className="flex justify-center">
-          <ShoppingBag className="w-20 h-20 text-[--brand-green]" strokeWidth={2.5} />
+          <ShoppingBag className="w-20 h-20 text-brand-green" strokeWidth={2.5} />
         </div>
         <h1 className="text-5xl md:text-6xl font-bold text-playful gradient-text flex items-center justify-center gap-3">
           <Star className="w-12 h-12" fill="currentColor" />
           Islamic Shop!
         </h1>
-        <p className="text-2xl md:text-3xl text-[--brand-green-dark] font-semibold flex items-center justify-center gap-2">
+        <p className="text-2xl md:text-3xl text-brand-green-dark font-semibold flex items-center justify-center gap-2">
           <Package className="w-8 h-8" />
           Quality Islamic Learning Materials!
         </p>
@@ -29,7 +29,7 @@ export default function ShopPage() {
         {products.map((product, idx) => (
           <div 
             key={product.name}
-            className={idx % 2 === 0 ? "fun-box-green text-white" : "fun-box-gold text-[--brand-green-dark]"}
+            className={idx % 2 === 0 ? "fun-box-green text-white" : "fun-box-gold text-brand-green-dark"}
           >
             <div className="space-y-4">
               {/* Image */}
@@ -58,7 +58,7 @@ export default function ShopPage() {
                   href={`mailto:an-nuracademy@outlook.com?subject=Shop order: ${product.name}`}
                   className={idx % 2 === 0 ? "btn-fun-gold block w-full text-center flex items-center justify-center gap-2" : "btn-fun block w-full text-center flex items-center justify-center gap-2"}
                 >
-                  <Mail className="w-5 h-5" />
+                  <Mail className={idx % 2 === 0 ? "w-5 h-5 text-brand-green-dark" : "w-5 h-5 text-white"} />
                   Contact to Order
                 </a>
               </div>
@@ -70,12 +70,12 @@ export default function ShopPage() {
       {/* 💬 INFO BOX */}
       <div className="fun-box-white text-center space-y-4">
         <div className="flex justify-center relative z-10">
-          <Package className="w-16 h-16 text-[--brand-green]" strokeWidth={2.5} />
+          <Package className="w-16 h-16 text-brand-green" strokeWidth={2.5} />
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-playful text-[--brand-green] flex items-center justify-center gap-2 relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-playful text-brand-green flex items-center justify-center gap-2 relative z-10">
           How to Order?
         </h2>
-        <p className="text-xl text-[--brand-green-dark] font-semibold flex flex-col items-center gap-2 relative z-10">
+        <p className="text-xl text-brand-green-dark font-semibold flex flex-col items-center gap-2 relative z-10">
           <span className="flex items-center gap-2">
             <Mail className="w-6 h-6" />
             Click &ldquo;Contact to Order&rdquo; on any product and send us an email!

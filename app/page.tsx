@@ -20,20 +20,20 @@ export default function Home() {
               <span>UK-based • Worldwide Access!</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-playful leading-tight">
-              <span className="gradient-text">Learn Quran, Arabic & Islam</span> with <span className="text-[--brand-green]">Experienced Teachers</span>
+              <span className="gradient-text">Learn Quran, Arabic & Islam</span> with <span className="text-brand-green">Experienced Teachers</span>
             </h1>
             <p className="text-xl md:text-2xl font-semibold gradient-text flex items-center justify-center gap-3 flex-wrap">
-              <Star className="w-7 h-7 inline" fill="currentColor" />
+              <Star className="w-7 h-7 inline text-brand-gold" fill="currentColor" />
               Personalised lessons for <span className="font-bold">all ages</span> and <span className="font-bold">all levels</span>
-              <Rocket className="w-7 h-7 inline" />
+              <Rocket className="w-7 h-7 inline text-brand-green" />
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <Link href="/assessment" className="btn-fun text-lg px-8 py-4 flex items-center gap-2">
-                <Star className="w-5 h-5" fill="currentColor" />
+                <Star className="w-5 h-5 text-white" fill="currentColor" />
                 Free Assessment
               </Link>
               <Link href="/enroll" className="btn-fun-gold text-lg px-8 py-4 flex items-center gap-2">
-                <GraduationCap className="w-5 h-5" />
+                <GraduationCap className="w-5 h-5 text-brand-green-dark" />
                 Enrol Now
               </Link>
             </div>
@@ -48,9 +48,9 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-[--brand-green]/60 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-center">
                 <p className="text-white text-2xl font-bold text-playful drop-shadow-lg flex items-center justify-center gap-2">
-                  <Star className="w-6 h-6" fill="currentColor" />
+                  <Star className="w-6 h-6 text-[--brand-gold-light]" fill="currentColor" />
                   Join Our Global Family!
-                  <Star className="w-6 h-6" fill="currentColor" />
+                  <Star className="w-6 h-6 text-[--brand-gold-light]" fill="currentColor" />
                 </p>
               </div>
             </div>
@@ -61,41 +61,41 @@ export default function Home() {
       {/* 🎯 WHY CHOOSE US - Fun Facts */}
       <section className="space-y-8">
         <h2 className="text-4xl md:text-5xl font-bold text-playful text-center gradient-text flex items-center justify-center gap-3">
-          <Star className="w-12 h-12" fill="currentColor" />
+          <Star className="w-12 h-12 text-brand-gold" fill="currentColor" />
           Why Choose An-Nur Academy?
-          <Star className="w-12 h-12" fill="currentColor" />
+          <Star className="w-12 h-12 text-brand-gold" fill="currentColor" />
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="fun-card text-center space-y-4">
             <div className="float flex justify-center">
-              <GraduationCap className="w-20 h-20 text-[--brand-green]" strokeWidth={2.5} />
+              <GraduationCap className="w-20 h-20 text-brand-green" strokeWidth={2.5} />
             </div>
-            <h3 className="text-2xl font-bold text-playful text-[--brand-green]">
+            <h3 className="text-2xl font-bold text-playful text-brand-green">
               Qualified Teachers
             </h3>
-            <p className="text-lg text-[--brand-green-dark]">
+            <p className="text-lg text-brand-green-dark">
               Learn from experienced <span className="font-bold">Scholars & Huffaaz</span> who speak English!
             </p>
           </div>
           <div className="fun-card text-center space-y-4">
             <div className="float flex justify-center">
-              <Target className="w-20 h-20 text-[--brand-gold]" strokeWidth={2.5} />
+              <Target className="w-20 h-20 text-brand-gold" strokeWidth={2.5} />
             </div>
-            <h3 className="text-2xl font-bold text-playful text-[--brand-green]">
+            <h3 className="text-2xl font-bold text-playful text-brand-green">
               Flexible Learning
             </h3>
-            <p className="text-lg text-[--brand-green-dark]">
+            <p className="text-lg text-brand-green-dark">
               Choose <span className="font-bold">group</span> or <span className="font-bold">1-to-1</span> classes that fit your schedule
             </p>
           </div>
           <div className="fun-card text-center space-y-4">
             <div className="float flex justify-center">
-              <Globe className="w-20 h-20 text-[--brand-green]" strokeWidth={2.5} />
+              <Globe className="w-20 h-20 text-brand-green" strokeWidth={2.5} />
             </div>
-            <h3 className="text-2xl font-bold text-playful text-[--brand-green]">
+            <h3 className="text-2xl font-bold text-playful text-brand-green">
               Worldwide Access
             </h3>
-            <p className="text-lg text-[--brand-green-dark]">
+            <p className="text-lg text-brand-green-dark">
               Study from <span className="font-bold">anywhere</span> in the world!
             </p>
           </div>
@@ -106,11 +106,11 @@ export default function Home() {
       <section className="space-y-8">
         <div className="text-center space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold text-playful gradient-text flex items-center justify-center gap-3">
-            <GraduationCap className="w-12 h-12" />
+            <GraduationCap className="w-12 h-12 text-brand-green" />
             Our Courses
           </h2>
-          <p className="text-xl text-[--brand-green-dark] font-semibold flex items-center justify-center gap-2">
-            <Star className="w-6 h-6" fill="currentColor" />
+          <p className="text-xl text-brand-green-dark font-semibold flex items-center justify-center gap-2">
+            <Star className="w-6 h-6 text-brand-gold" fill="currentColor" />
             Choose what you&apos;d like to learn
           </p>
         </div>
@@ -119,7 +119,7 @@ export default function Home() {
             <Link 
               key={course.href} 
               href={course.href}
-              className={course.color === "green" ? "fun-box-green text-white" : "fun-box-gold text-[--brand-green-dark]"}
+              className={course.color === "green" ? "fun-box-green text-white" : "fun-box-gold text-brand-green-dark"}
             >
               <div className="space-y-4">
                 {/* Image at top */}
@@ -148,7 +148,7 @@ export default function Home() {
         </div>
         <div className="text-center pt-6">
           <Link href="/offerings" className="btn-fun text-xl px-10 py-5 flex items-center justify-center gap-2">
-            <Target className="w-6 h-6" />
+            <Target className="w-6 h-6 text-white" />
             View All Courses
           </Link>
         </div>
@@ -157,33 +157,33 @@ export default function Home() {
       {/* 🎉 SPECIAL FEATURES */}
       <section className="fun-box-white space-y-8">
         <h2 className="text-4xl md:text-5xl font-bold text-playful text-center gradient-text flex items-center justify-center gap-3">
-          <Award className="w-12 h-12" fill="currentColor" />
+          <Award className="w-12 h-12 text-brand-gold" fill="currentColor" />
           What Makes Us Special?
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="text-center space-y-3">
             <div className="flex justify-center">
-              <Users className="w-16 h-16 text-[--brand-green]" strokeWidth={2.5} />
+              <Users className="w-16 h-16 text-brand-green" strokeWidth={2.5} />
             </div>
-            <p className="text-lg font-bold text-[--brand-green]">All Ages Welcome</p>
+            <p className="text-lg font-bold text-brand-green">All Ages Welcome</p>
           </div>
           <div className="text-center space-y-3">
             <div className="flex justify-center">
-              <Star className="w-16 h-16 text-[--brand-gold]" fill="currentColor" strokeWidth={2.5} />
+              <Star className="w-16 h-16 text-brand-gold" fill="currentColor" strokeWidth={2.5} />
             </div>
-            <p className="text-lg font-bold text-[--brand-green]">Free Assessment</p>
+            <p className="text-lg font-bold text-brand-green">Free Assessment</p>
           </div>
           <div className="text-center space-y-3">
             <div className="flex justify-center">
-              <Users className="w-16 h-16 text-[--brand-green]" strokeWidth={2.5} />
+              <Users className="w-16 h-16 text-brand-green" strokeWidth={2.5} />
             </div>
-            <p className="text-lg font-bold text-[--brand-green]">Segregated Classes</p>
+            <p className="text-lg font-bold text-brand-green">Segregated Classes</p>
           </div>
           <div className="text-center space-y-3">
             <div className="flex justify-center">
-              <Globe className="w-16 h-16 text-[--brand-gold]" strokeWidth={2.5} />
+              <Globe className="w-16 h-16 text-brand-gold" strokeWidth={2.5} />
             </div>
-            <p className="text-lg font-bold text-[--brand-green]">100% Online</p>
+            <p className="text-lg font-bold text-brand-green">100% Online</p>
           </div>
         </div>
       </section>
@@ -191,29 +191,29 @@ export default function Home() {
       {/* 🚀 FINAL CTA */}
       <section className="fun-box-gold text-center space-y-8 py-12">
         <div className="space-y-4 relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-playful text-[--brand-green-dark] flex items-center justify-center gap-3">
-            <Rocket className="w-12 h-12 md:w-16 md:h-16" />
+          <h2 className="text-4xl md:text-6xl font-bold text-playful text-brand-green-dark flex items-center justify-center gap-3">
+            <Rocket className="w-12 h-12 md:w-16 md:h-16 text-brand-green" />
             Ready to Begin?
           </h2>
-          <p className="text-2xl md:text-3xl font-semibold text-[--brand-green-dark] flex items-center justify-center gap-3 flex-wrap">
-            <Star className="w-8 h-8" fill="currentColor" />
+          <p className="text-2xl md:text-3xl font-semibold text-brand-green-dark flex items-center justify-center gap-3 flex-wrap">
+            <Star className="w-8 h-8 text-brand-gold" fill="currentColor" />
             Start your Islamic learning journey today
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-6 relative z-10">
           <Link href="/assessment" className="btn-fun text-xl px-12 py-6 flex items-center gap-3">
-            <Star className="w-6 h-6" fill="currentColor" />
+            <Star className="w-6 h-6 text-white" fill="currentColor" />
             Book Free Assessment
           </Link>
           <Link href="/enroll" className="btn-fun-gold text-xl px-12 py-6 flex items-center gap-3">
-            <GraduationCap className="w-6 h-6" />
+            <GraduationCap className="w-6 h-6 text-brand-green-dark" />
             Enrol Now
           </Link>
         </div>
-        <p className="text-lg text-[--brand-green-dark] font-semibold pt-4 flex items-center justify-center gap-2 flex-wrap relative z-10">
-          <Globe className="w-6 h-6" />
+        <p className="text-lg text-brand-green-dark font-semibold pt-4 flex items-center justify-center gap-2 flex-wrap relative z-10">
+          <Globe className="w-6 h-6 text-brand-green" />
           Join students from around the world
-          <Star className="w-6 h-6" fill="currentColor" />
+          <Star className="w-6 h-6 text-brand-gold" fill="currentColor" />
         </p>
       </section>
     </div>
