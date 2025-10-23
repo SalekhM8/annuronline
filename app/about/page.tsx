@@ -1,10 +1,10 @@
-import { Star, Target, BookOpen, GraduationCap, Zap, Rocket, Globe, Heart } from "lucide-react";
+import { Star, Target, BookOpen, GraduationCap, Zap, Rocket, Earth, Heart } from "lucide-react";
 
 export default function AboutPage() {
   return (
     <>
       {/* Background Image */}
-      <div className="page-bg-image" style={{ backgroundImage: 'url(/images/islamicstudies.png)' }} />
+      <div className="page-bg-image" style={{ backgroundImage: 'url(/images/islamicstudies.tiff)' }} />
       
       <div className="py-10 space-y-10 max-w-6xl mx-auto">
       {/* 🎉 PLAYFUL HERO TITLE */}
@@ -29,7 +29,7 @@ export default function AboutPage() {
           </h2>
         </div>
         <p className="text-xl md:text-2xl leading-relaxed text-center relative z-10 flex items-center justify-center gap-2 flex-wrap">
-          <Globe className="w-7 h-7 text-white" />
+          <Earth className="w-7 h-7 text-white" />
           At <span className="font-bold text-[--brand-gold-light]">An‑Nur Academy</span>, our mission is to make <span className="font-bold">Islamic education accessible to all</span>, helping students build a <span className="font-bold text-[--brand-gold-light]">strong connection with their faith</span> from anywhere in the world.
         </p>
         <p className="text-xl md:text-2xl leading-relaxed text-center relative z-10">
@@ -105,10 +105,10 @@ export default function AboutPage() {
             Since 2020
           </h2>
           <p className="text-xl md:text-2xl leading-relaxed">
-            We&apos;ve offered <span className="font-bold text-[--brand-gold-light]">flexible, high-quality</span> online courses led by experienced <span className="font-bold text-[--brand-gold-light]">Scholars and Huffaaz</span>. 👨‍🏫
+            We&apos;ve offered <span className="font-bold text-[--brand-gold-light]">flexible, high-quality</span> online courses led by experienced <span className="font-bold text-[--brand-gold-light]">Scholars and Huffaaz</span>
           </p>
           <p className="text-xl md:text-2xl leading-relaxed">
-            From foundational <span className="font-bold text-[--brand-gold-light]">Qaidah</span> and <span className="font-bold text-[--brand-gold-light]">Quran</span> lessons to advanced <span className="font-bold text-[--brand-gold-light]">Hifdh</span> and <span className="font-bold text-[--brand-gold-light]">Islamic Studies</span>, our curriculum serves students of <span className="font-bold text-[--brand-gold-light]">all ages and levels!</span> 👶👧🧒👨👴
+            From foundational <span className="font-bold text-[--brand-gold-light]">Qaidah</span> and <span className="font-bold text-[--brand-gold-light]">Quran</span> lessons to advanced <span className="font-bold text-[--brand-gold-light]">Hifdh</span> and <span className="font-bold text-[--brand-gold-light]">Islamic Studies</span>, our curriculum serves students of <span className="font-bold text-[--brand-gold-light]">all ages and levels</span>
           </p>
         </div>
       </div>
@@ -157,7 +157,7 @@ export default function AboutPage() {
           Ready to Start Your Journey?
         </h2>
         <p className="text-2xl text-brand-green-dark font-semibold flex items-center justify-center gap-3 flex-wrap relative z-10">
-          <Globe className="w-8 h-8 text-brand-green" />
+          <Earth className="w-8 h-8 text-brand-green" />
           Join thousands of students worldwide
           <Star className="w-8 h-8 text-brand-gold" fill="currentColor" />
         </p>

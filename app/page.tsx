@@ -1,12 +1,64 @@
+"use client";
+
 import Link from "next/link";
-import { BookMarked, BookOpen, Mic2, PenTool, GraduationCap, Users, Globe, Rocket, Star, Target, Award } from "lucide-react";
+import { BookMarked, BookOpen, MessageCircle, PenTool, GraduationCap, Users, Earth, Rocket, Star, Target, Award } from "lucide-react";
+import { useState, useEffect } from "react";
+
+function FlagRotation() {
+  const flags = [
+    { url: "/images/america.png", name: "USA" },
+    { url: "/images/unitedkingdom.png", name: "UK" },
+    { url: "/images/canada.png", name: "Canada" },
+    { url: "/images/southamerica.png", name: "South America" },
+  ];
+  const [currentFlag, setCurrentFlag] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentFlag((prev) => (prev + 1) % flags.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [flags.length]);
+
+  return (
+    <div className="relative">
+      <div className="relative h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/30">
+        {/* Flag images with crossfade */}
+        {flags.map((flag, idx) => (
+          <div 
+            key={idx}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentFlag === idx ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <img 
+              src={flag.url}
+              alt={flag.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+        {/* Text overlay - centered */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <p className="text-white text-xl md:text-2xl font-bold text-playful drop-shadow-2xl text-center px-6">
+            <span className="flex items-center justify-center gap-2 flex-wrap">
+              <Star className="w-5 h-5 text-[--brand-gold-light]" fill="currentColor" />
+              Join Our Global Family!
+              <Star className="w-5 h-5 text-[--brand-gold-light]" fill="currentColor" />
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   const courses = [
-    { title: "Islamic Studies", href: "/offerings/islamic-studies", Icon: BookMarked, color: "green", imageUrl: "/images/islamicstudies.png" },
+    { title: "Islamic Studies", href: "/offerings/islamic-studies", Icon: BookMarked, color: "green", imageUrl: "/images/islamicstudies.tiff" },
     { title: "Quran", href: "/offerings/quran", Icon: BookOpen, color: "gold", imageUrl: "/images/quran.png" },
-    { title: "Tajweed", href: "/offerings/tajweed", Icon: Mic2, color: "green", imageUrl: "/images/tajweed.png" },
-    { title: "Learn Arabic", href: "/offerings/arabic", Icon: PenTool, color: "gold", imageUrl: "/images/learnarabic.png" },
+    { title: "Tajweed", href: "/offerings/tajweed", Icon: MessageCircle, color: "green", imageUrl: "/images/tajweed.jpg" },
+    { title: "Learn Arabic", href: "/offerings/arabic", Icon: PenTool, color: "gold", imageUrl: "/images/arabic.jpg" },
   ];
 
   return (
@@ -14,20 +66,20 @@ export default function Home() {
       {/* 🎉 HERO SECTION */}
       <section className="fun-box-white space-y-8">
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[--brand-green] px-5 py-2 text-sm font-bold border-2 border-[--brand-gold]/40 shadow-lg text-[--brand-gold-light]">
-              <Globe className="w-5 h-5" />
+          <div className="space-y-6 text-center md:text-left">
+            <div className="flex justify-center md:inline-flex items-center gap-2 rounded-full bg-[--brand-green] px-5 py-2 text-sm font-bold border-2 border-[--brand-gold]/40 shadow-lg text-[--brand-gold-light]">
+              <Earth className="w-5 h-5" />
               <span>UK-based • Worldwide Access!</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-playful leading-tight">
               <span className="gradient-text">Learn Quran, Arabic & Islam</span> with <span className="text-brand-green">Experienced Teachers</span>
             </h1>
-            <p className="text-xl md:text-2xl font-semibold gradient-text flex items-center justify-center gap-3 flex-wrap">
+            <p className="text-xl md:text-2xl font-semibold gradient-text flex items-center justify-center md:justify-start gap-3 flex-wrap">
               <Star className="w-7 h-7 inline text-brand-gold" fill="currentColor" />
               Personalised lessons for <span className="font-bold">all ages</span> and <span className="font-bold">all levels</span>
               <Rocket className="w-7 h-7 inline text-brand-green" />
             </p>
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-wrap gap-4 pt-4 justify-center md:justify-start">
               <Link href="/assessment" className="btn-fun text-lg px-8 py-4 flex items-center gap-2">
                 <Star className="w-5 h-5 text-white" fill="currentColor" />
                 Free Assessment
@@ -38,32 +90,16 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative">
-            <div className="relative h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/30">
-              <img 
-                src="/images/mainheroannur.png" 
-                alt="Islamic Learning" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[--brand-green]/60 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-center">
-                <p className="text-white text-2xl font-bold text-playful drop-shadow-lg flex items-center justify-center gap-2">
-                  <Star className="w-6 h-6 text-[--brand-gold-light]" fill="currentColor" />
-                  Join Our Global Family!
-                  <Star className="w-6 h-6 text-[--brand-gold-light]" fill="currentColor" />
-                </p>
-              </div>
-            </div>
-          </div>
+          <FlagRotation />
         </div>
       </section>
 
       {/* 🎯 WHY CHOOSE US - Fun Facts */}
       <section className="space-y-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-playful text-center gradient-text flex items-center justify-center gap-3">
-          <Star className="w-12 h-12 text-brand-gold" fill="currentColor" />
-          Why Choose An-Nur Academy?
-          <Star className="w-12 h-12 text-brand-gold" fill="currentColor" />
+        <h2 className="text-3xl md:text-5xl font-bold text-playful text-center gradient-text flex items-center justify-center gap-2 md:gap-3 flex-wrap">
+          <Star className="w-10 h-10 md:w-12 md:h-12 text-brand-gold" fill="currentColor" />
+          <span>Why Choose An-Nur Academy?</span>
+          <Star className="w-10 h-10 md:w-12 md:h-12 text-brand-gold" fill="currentColor" />
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="fun-card text-center space-y-4">
@@ -73,7 +109,7 @@ export default function Home() {
             <h3 className="text-2xl font-bold text-playful text-brand-green">
               Qualified Teachers
             </h3>
-            <p className="text-lg text-brand-green-dark">
+            <p className="text-lg text-brand-green-dark text-playful">
               Learn from experienced <span className="font-bold">Scholars & Huffaaz</span> who speak English!
             </p>
           </div>
@@ -84,18 +120,18 @@ export default function Home() {
             <h3 className="text-2xl font-bold text-playful text-brand-green">
               Flexible Learning
             </h3>
-            <p className="text-lg text-brand-green-dark">
+            <p className="text-lg text-brand-green-dark text-playful">
               Choose <span className="font-bold">group</span> or <span className="font-bold">1-to-1</span> classes that fit your schedule
             </p>
           </div>
           <div className="fun-card text-center space-y-4">
             <div className="float flex justify-center">
-              <Globe className="w-20 h-20 text-brand-green" strokeWidth={2.5} />
+              <Earth className="w-20 h-20 text-brand-green" strokeWidth={2.5} />
             </div>
             <h3 className="text-2xl font-bold text-playful text-brand-green">
               Worldwide Access
             </h3>
-            <p className="text-lg text-brand-green-dark">
+            <p className="text-lg text-brand-green-dark text-playful">
               Study from <span className="font-bold">anywhere</span> in the world!
             </p>
           </div>
@@ -132,7 +168,8 @@ export default function Home() {
                 </div>
                 {/* Content */}
                 <div className="space-y-3 text-center relative z-10">
-                  <div className="flex justify-center">
+                  {/* Hide icon on mobile, show on desktop */}
+                  <div className="hidden md:flex justify-center">
                     <course.Icon className="w-16 h-16" strokeWidth={2.5} />
                   </div>
                   <h3 className="text-3xl md:text-4xl font-bold text-playful">
@@ -181,7 +218,7 @@ export default function Home() {
           </div>
           <div className="text-center space-y-3">
             <div className="flex justify-center">
-              <Globe className="w-16 h-16 text-brand-gold" strokeWidth={2.5} />
+              <Earth className="w-16 h-16 text-brand-gold" strokeWidth={2.5} />
             </div>
             <p className="text-lg font-bold text-brand-green">100% Online</p>
           </div>
@@ -211,7 +248,7 @@ export default function Home() {
           </Link>
         </div>
         <p className="text-lg text-brand-green-dark font-semibold pt-4 flex items-center justify-center gap-2 flex-wrap relative z-10">
-          <Globe className="w-6 h-6 text-brand-green" />
+          <Earth className="w-6 h-6 text-brand-green" />
           Join students from around the world
           <Star className="w-6 h-6 text-brand-gold" fill="currentColor" />
         </p>

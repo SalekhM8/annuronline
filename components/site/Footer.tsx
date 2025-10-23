@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, GraduationCap, Package, Lock, Star, Instagram, Facebook, Youtube, Music, Building2, Globe, Mail, Phone } from "lucide-react";
+import { BookOpen, GraduationCap, Package, Lock, Star, Instagram, Facebook, Youtube, Music, Earth, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -12,11 +12,11 @@ export default function Footer() {
       }}
     >
       <div className="container-px mx-auto py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* BRAND */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src="/annurlogo.JPG" alt="An-Nur Academy" className="h-16 w-16 rounded-2xl border-2 border-[--brand-gold]/30" />
+              <img src="/images/annurlogo-removebg-preview.png" alt="An-Nur Academy" className="h-16 w-16 rounded-2xl" />
               <div>
                 <div className="text-2xl font-bold text-playful gradient-text">An‑Nur Academy</div>
                 <p className="text-sm font-semibold text-brand-green-dark flex items-center gap-1">
@@ -27,7 +27,7 @@ export default function Footer() {
             </div>
             <div className="text-sm text-brand-green-dark font-semibold space-y-2">
               <div className="flex items-center gap-2">
-                <Globe className="w-4 h-4" /> UK‑based • Accessible worldwide
+                <Earth className="w-4 h-4" /> UK‑based • Accessible worldwide
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" /> an-nuracademy@outlook.com
@@ -95,21 +95,6 @@ export default function Footer() {
                 className="text-sm font-semibold text-brand-green-dark hover:text-brand-gold transition-all hover:scale-105 flex items-center gap-2"
               >
                 <Facebook className="w-5 h-5" /> Facebook
-              </a>
-            </div>
-          </div>
-
-          {/* USEFUL LINKS */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-playful text-brand-green">Useful Links</h3>
-            <div className="flex flex-col gap-3">
-              <a 
-                href="https://ar-rashad.com/about" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-sm font-semibold text-brand-green-dark hover:text-brand-gold transition-all hover:scale-105 flex items-center gap-2"
-              >
-                <Building2 className="w-5 h-5" /> Ar-Rashad Academy
               </a>
             </div>
           </div>

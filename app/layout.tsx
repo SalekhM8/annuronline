@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: "UK‑based online Islamic academy. Qualified English-speaking teachers.",
     url: "https://annur.online",
     siteName: "An‑Nur Academy",
-    images: [{ url: "/annurlogo.JPG", width: 1200, height: 630 }],
+    images: [{ url: "/images/annurlogo-removebg-preview.png", width: 1200, height: 630 }],
     locale: "en_GB",
     type: "website",
   },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "An‑Nur Academy",
     description: "UK‑based online Islamic academy",
-    images: ["/annurlogo.JPG"],
+    images: ["/images/annurlogo-removebg-preview.png"],
   },
   icons: {
     icon: "/favicon.ico",

@@ -2,7 +2,7 @@ import { ShoppingBag, BookOpen, BookMarked, Star, Package, Mail, MessageCircle }
 
 export default function ShopPage() {
   const products = [
-    { name: "Ahsanul Qawa'id", price: "£4.99", image: "/images/islamicstudies.png", Icon: BookOpen, description: "Learn Arabic basics!" },
+    { name: "Ahsanul Qawa'id", price: "£4.99", image: "/images/ahsanulqawaid.webp", Icon: BookOpen, description: "Learn Arabic basics!" },
     { name: "Quran", price: "£14.99", image: "/images/quran.png", Icon: BookMarked, description: "Beautiful copy!" },
     { name: "Electronic Tasbeeh", price: "£5.99", image: "/images/tasbeeh.png", Icon: Star, description: "Count your dhikr!" },
   ];
@@ -38,11 +38,13 @@ export default function ShopPage() {
                   src={product.image} 
                   alt={product.name}
                   className="w-full h-full object-cover"
+                  style={{}}
                 />
               </div>
               {/* Info */}
               <div className="text-center space-y-3 relative z-10">
-                <div className="flex justify-center">
+                {/* Hide icon on mobile, show on desktop */}
+                <div className="hidden md:flex justify-center">
                   <product.Icon className="w-14 h-14" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-playful">

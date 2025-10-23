@@ -72,7 +72,7 @@ body {
 .fun-card {
   @apply relative rounded-3xl p-6 shadow-lg transition-all duration-300 ease-out;
   background: linear-gradient(145deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(0, 168, 107, 0.3);
   transform-origin: center;
   box-shadow: 
     0 8px 32px rgba(0, 168, 107, 0.12),
@@ -145,7 +145,7 @@ body {
 .fun-box-white {
   @apply rounded-3xl p-8 relative;
   background: linear-gradient(145deg, rgba(255,255,255,0.65), rgba(255,255,255,0.45));
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(0, 168, 107, 0.4);
   box-shadow: 
     0 8px 32px rgba(0, 168, 107, 0.1),
     inset 0 1px 1px rgba(255, 255, 255, 0.8),
@@ -252,6 +252,41 @@ body {
   box-shadow: 0 12px 30px rgba(253, 185, 39, 0.4);
 }
 
+/* White button for use on gold backgrounds */
+.btn-fun-white {
+  @apply relative inline-flex items-center justify-center rounded-full px-8 py-4 text-lg font-bold uppercase tracking-wide transition-all duration-300 cursor-pointer;
+  font-family: var(--font-playful), 'Fredoka', sans-serif;
+  background: linear-gradient(145deg, white 0%, rgba(255,255,255,0.95) 100%);
+  color: var(--brand-green-dark);
+  border: 2px solid rgba(0, 168, 107, 0.3);
+  box-shadow: 
+    0 4px 16px rgba(255, 255, 255, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+
+.btn-fun-white::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, transparent 100%);
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+.btn-fun-white svg {
+  color: var(--brand-green-dark) !important;
+}
+
+.btn-fun-white:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.5);
+}
+
 /* 🎪 BOUNCING ANIMATION */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
@@ -272,9 +307,9 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
-/* 🎨 GRADIENT TEXT */
+/* 🎨 GRADIENT TEXT - GOLD TO GREEN */
 .gradient-text {
-  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-gold) 100%);
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-green) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -295,6 +330,11 @@ body {
   font-family: var(--font-playful), 'Fredoka', sans-serif;
   font-weight: 600;
   letter-spacing: 0.5px;
+}
+
+/* Make all description text use playful font */
+.text-brand-green-dark {
+  font-family: var(--font-playful), 'Fredoka', sans-serif !important;
 }
 
 .text-fun-xl {

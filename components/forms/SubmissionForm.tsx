@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { User, Users, BookOpen, Layers, Brain, Mic2, BookMarked, Heart, Handshake, PenTool, MessageCircle, Send, CheckCircle } from "lucide-react";
+import { User, Users, BookOpen, Layers, Brain, MessageCircle as MessageCircleIcon, BookMarked, Heart, Handshake, PenTool, MessageCircle, Send, CheckCircle } from "lucide-react";
 
 const schema = z.object({
   type: z.enum(["ASSESSMENT", "ENROLLMENT"]),
@@ -62,8 +62,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
         
         {/* 👤 PERSONAL INFO */}
         <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-playful text-brand-green flex items-center gap-2">
-            <User className="w-8 h-8" strokeWidth={2.5} /> Your Info
+          <h3 className="text-2xl font-bold text-playful text-brand-green">
+            Your Info
           </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
@@ -112,8 +112,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
 
         {/* 👶 STUDENT INFO */}
         <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-playful text-brand-green flex items-center gap-2">
-            <Users className="w-8 h-8" strokeWidth={2.5} /> Student Info
+          <h3 className="text-2xl font-bold text-playful text-brand-green">
+            Student Info
           </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
@@ -160,15 +160,15 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
 
         {/* 📚 COURSES */}
         <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-playful text-brand-green flex items-center gap-2">
-            <BookOpen className="w-8 h-8" strokeWidth={2.5} /> Select Your Courses *
+          <h3 className="text-2xl font-bold text-playful text-brand-green">
+            Select Your Courses *
           </h3>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { name: "Qaidah", Icon: Layers },
               { name: "Quran", Icon: BookOpen },
               { name: "Hifz", Icon: Brain },
-              { name: "Tajweed", Icon: Mic2 },
+              { name: "Tajweed", Icon: MessageCircleIcon },
               { name: "Islamic Studies", Icon: BookMarked },
               { name: "Naseeha", Icon: Heart },
               { name: "Faith-based Counselling", Icon: Handshake },
@@ -191,8 +191,8 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
 
         {/* 💬 MORE INFO */}
         <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-playful text-brand-green flex items-center gap-2">
-            <MessageCircle className="w-8 h-8" strokeWidth={2.5} /> Tell Us More!
+          <h3 className="text-2xl font-bold text-playful text-brand-green">
+            Tell Us More
           </h3>
           <div className="space-y-4">
             <div>
@@ -209,9 +209,9 @@ export default function SubmissionForm({ type = "ASSESSMENT" as SubmissionValues
               <label className="text-sm font-bold text-brand-green-dark">Additional Comments</label>
               <textarea 
                 className="mt-2 w-full rounded-2xl border-2 border-[--brand-gold]/40 p-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[--brand-green]/30 focus:border-[--brand-green]/60 transition-all shadow-sm"
-                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }} 
+                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)' }}
                 rows={3} 
-                placeholder="Any questions or comments?"
+                placeholder="What are you hoping to achieve?"
                 {...register("comments")} 
               />
             </div>

@@ -1,5 +1,5 @@
 import SubmissionForm from "@/components/forms/SubmissionForm";
-import { GraduationCap, Rocket, Globe, Star } from "lucide-react";
+import { GraduationCap, Rocket, Earth, Star } from "lucide-react";
 
 export default function EnrollPage() {
   return (
@@ -14,7 +14,7 @@ export default function EnrollPage() {
           Enrol Now
         </h1>
         <p className="text-xl md:text-2xl text-brand-green-dark font-semibold flex items-center justify-center gap-3 flex-wrap">
-          <Globe className="w-7 h-7 text-brand-green" />
+          <Earth className="w-7 h-7 text-brand-green" />
           Join our global learning community
           <Star className="w-7 h-7 text-brand-gold" fill="currentColor" />
         </p>

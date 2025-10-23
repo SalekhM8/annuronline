@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { useState, useEffect } from "react";
-import { BookOpen, GraduationCap, ShoppingBag, Star } from "lucide-react";
+import { BookOpen, GraduationCap, ShoppingBag, Star, Handshake } from "lucide-react";
 
 const nav = [
   { href: "/about", label: "About Us", Icon: BookOpen },
@@ -32,11 +32,11 @@ export default function Header() {
         <div className="flex justify-center pt-8 pb-4">
           <div className="text-center">
             <img 
-              src="/annurlogo.JPG" 
+              src="/images/annurlogo-removebg-preview.png" 
               alt="An‑Nur Academy" 
-              className="mx-auto h-48 w-48 md:h-56 md:w-56 rounded-3xl shadow-2xl border-4 border-[--brand-gold]/40" 
+              className="mx-auto h-48 w-48 md:h-56 md:w-56 rounded-3xl shadow-2xl" 
             />
-            <h1 className="mt-4 text-4xl md:text-5xl font-bold text-playful gradient-text">
+            <h1 className="mt-4 text-2xl md:text-5xl font-bold text-playful gradient-text">
               An-Nur Academy
             </h1>
             <p className="mt-2 text-lg md:text-xl text-brand-green-dark font-semibold flex items-center justify-center gap-2">
@@ -71,10 +71,10 @@ export default function Header() {
             {/* Logo - Small when scrolled */}
             <Link href="/" className="flex items-center gap-3 scale-bounce">
               <img 
-                src="/annurlogo.JPG" 
+                src="/images/annurlogo-removebg-preview.png" 
                 alt="An‑Nur Academy" 
                 className={clsx(
-                  "rounded-xl border-2 border-[--brand-gold]/30 shadow-lg transition-all duration-500",
+                  "rounded-xl shadow-lg transition-all duration-500",
                   scrolled ? "h-12 w-12" : "h-16 w-16"
                 )} 
               />
@@ -104,14 +104,18 @@ export default function Header() {
             </nav>
 
             {/* CTA Buttons - Desktop */}
-            <div className="hidden md:flex items-center gap-3">
-              <Link href="/enroll" className="btn-fun-gold text-sm px-6 py-3 flex items-center gap-2">
-                <GraduationCap className="w-4 h-4 text-brand-green-dark" />
+            <div className="hidden md:flex items-center gap-2">
+              <Link href="/enroll" className="btn-fun-gold text-xs px-4 py-2 flex items-center gap-1">
+                <GraduationCap className="w-3 h-3 text-brand-green-dark" />
                 Enrol
               </Link>
-              <Link href="/assessment" className="btn-fun text-sm px-6 py-3 flex items-center gap-2">
-                <Star className="w-4 h-4 text-white" fill="currentColor" />
+              <Link href="/assessment" className="btn-fun text-xs px-4 py-2 flex items-center gap-1">
+                <Star className="w-3 h-3 text-white" fill="currentColor" />
                 Assessment
+              </Link>
+              <Link href="/counselling-booking" className="btn-fun-white text-xs px-4 py-2 flex items-center gap-1">
+                <Handshake className="w-3 h-3 text-brand-green-dark" />
+                Counselling
               </Link>
             </div>
 
