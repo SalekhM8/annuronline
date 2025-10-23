@@ -4,14 +4,14 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Handshake, Star, User, Users, MessageCircle, Send, CheckCircle } from "lucide-react";
+import { Handshake, Star, MessageCircle, Send, CheckCircle } from "lucide-react";
 
 const schema = z.object({
   fullName: z.string().min(2, "Required"),
   email: z.string().email("Invalid email"),
   phone: z.string().optional(),
-  counsellingType: z.enum(["family", "marriage", "individual"], { required_error: "Please select a type" }),
-  deliveryMethod: z.enum(["in-person", "online"], { required_error: "Please select a method" }),
+  counsellingType: z.enum(["family", "marriage", "individual"]).refine((val) => val !== undefined, { message: "Please select a type" }),
+  deliveryMethod: z.enum(["in-person", "online"]).refine((val) => val !== undefined, { message: "Please select a method" }),
   message: z.string().optional(),
 });
 
@@ -26,6 +26,7 @@ export default function CounsellingBookingPage() {
     reset,
     formState: { errors },
   } = useForm<CounsellingValues>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: zodResolver(schema) as any,
   });
 

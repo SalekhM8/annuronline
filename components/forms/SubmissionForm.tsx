@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { User, Users, BookOpen, Layers, Brain, MessageCircle as MessageCircleIcon, BookMarked, Heart, Handshake, PenTool, MessageCircle, Send, CheckCircle } from "lucide-react";
+import { BookOpen, Layers, Brain, MessageCircle as MessageCircleIcon, BookMarked, Heart, Handshake, PenTool, MessageCircle, Send, CheckCircle } from "lucide-react";
 
 const schema = z.object({
   type: z.enum(["ASSESSMENT", "ENROLLMENT"]),
