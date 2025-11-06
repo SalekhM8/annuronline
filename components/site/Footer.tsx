@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, GraduationCap, Package, Lock, Star, Instagram, Facebook, Youtube, Music, Earth, Mail, Phone } from "lucide-react";
+import { BookOpen, GraduationCap, Package, Lock, Star, Instagram, Facebook, Youtube, Music, Earth, Mail, Phone, Link as LinkIcon } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -81,7 +81,7 @@ export default function Footer() {
                 <Music className="w-5 h-5" /> TikTok
               </a>
               <a 
-                href="https://www.youtube.com/@An-NurAcademy" 
+                href="https://youtube.com/@an-nur.academy?si=msalFRFSVdyHtVvJ" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-sm font-semibold text-brand-green-dark hover:text-brand-gold transition-all hover:scale-105 flex items-center gap-2"
@@ -95,6 +95,14 @@ export default function Footer() {
                 className="text-sm font-semibold text-brand-green-dark hover:text-brand-gold transition-all hover:scale-105 flex items-center gap-2"
               >
                 <Facebook className="w-5 h-5" /> Facebook
+              </a>
+              <a 
+                href="https://linktr.ee/AnNur_Academy" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-brand-green-dark hover:text-brand-gold transition-all hover:scale-105 flex items-center gap-2"
+              >
+                <LinkIcon className="w-5 h-5" /> Linktree
               </a>
             </div>
           </div>
