@@ -2,11 +2,11 @@ import Link from "next/link";
 import { BookMarked, BookOpen, MessageCircle, PenTool, Brain, Layers, Heart, Handshake, GraduationCap, Star, Target } from "lucide-react";
 
 const offerings = [
-  { title: "Islamic Studies", href: "/offerings/islamic-studies", Icon: BookMarked, imageUrl: "/images/islamicstudies.tiff", description: "Diploma programme!" },
+  { title: "Islamic Studies", href: "/offerings/islamic-studies", Icon: BookMarked, imageUrl: "/images/islamicstudies.png", description: "Diploma programme!" },
   { title: "Quran", href: "/offerings/quran", Icon: BookOpen, imageUrl: "/images/quran.png", description: "Read & recite beautifully!" },
   { title: "Tajweed", href: "/offerings/tajweed", Icon: MessageCircle, imageUrl: "/images/tajweed.jpg", description: "Perfect pronunciation!" },
   { title: "Learn Arabic", href: "/offerings/arabic", Icon: PenTool, imageUrl: "/images/arabic.jpg", description: "Master the language!" },
-  { title: "Hifz (Memorisation)", href: "/offerings/hifz", Icon: Brain, imageUrl: "/images/hifz.tiff", description: "Memorise the Quran!" },
+  { title: "Hifz (Memorisation)", href: "/offerings/hifz", Icon: Brain, imageUrl: "/images/hifz.jpg", description: "Memorise the Quran!" },
   { title: "Qaidah", href: "/offerings/qaidah", Icon: Layers, imageUrl: "/images/ahsanulqawaid.webp", description: "Start from basics!" },
   { title: "Naseeha", href: "/offerings/naseeha", Icon: Heart, imageUrl: "/images/dua.jpg", description: "Spiritual guidance!" },
   { title: "Counselling", href: "/offerings/counselling", Icon: Handshake, imageUrl: "/images/tasbeeh.png", description: "Faith-based support!" },

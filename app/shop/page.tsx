@@ -4,7 +4,7 @@ export default function ShopPage() {
   const products = [
     { name: "Ahsanul Qawa'id", price: "£4.99", image: "/images/ahsanulqawaid.webp", Icon: BookOpen, description: "Learn Arabic basics!" },
     { name: "Quran", price: "£14.99", image: "/images/quran.png", Icon: BookMarked, description: "Beautiful copy!" },
-    { name: "Electronic Tasbeeh", price: "£5.99", image: "/images/tasbeeh.png", Icon: Star, description: "Count your dhikr!" },
+    { name: "Electronic Tasbeeh", price: "£5.99", image: "/images/tasbeehdigital.jpg", Icon: Star, description: "Count your dhikr!" },
   ];
   
   return (

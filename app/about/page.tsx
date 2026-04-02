@@ -4,7 +4,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Background Image */}
-      <div className="page-bg-image" style={{ backgroundImage: 'url(/images/islamicstudies.tiff)' }} />
+      <div className="page-bg-image" style={{ backgroundImage: 'url(/images/islamicstudies.png)' }} />
       
       <div className="py-10 space-y-10 max-w-6xl mx-auto">
       {/* 🎉 PLAYFUL HERO TITLE */}

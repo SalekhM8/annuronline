@@ -55,7 +55,7 @@ function FlagRotation() {
 
 export default function Home() {
   const courses = [
-    { title: "Islamic Studies", href: "/offerings/islamic-studies", Icon: BookMarked, color: "green", imageUrl: "/images/islamicstudies.tiff" },
+    { title: "Islamic Studies", href: "/offerings/islamic-studies", Icon: BookMarked, color: "green", imageUrl: "/images/islamicstudies.png" },
     { title: "Quran", href: "/offerings/quran", Icon: BookOpen, color: "gold", imageUrl: "/images/quran.png" },
     { title: "Tajweed", href: "/offerings/tajweed", Icon: MessageCircle, color: "green", imageUrl: "/images/tajweed.jpg" },
     { title: "Learn Arabic", href: "/offerings/arabic", Icon: PenTool, color: "gold", imageUrl: "/images/arabic.jpg" },

@@ -5,7 +5,7 @@ import { Brain, Star, Target, BookOpen, GraduationCap, Rocket, Repeat } from "lu
 export default function HifzPage() {
   return (
     <>
-      <div className="page-bg-image" style={{ backgroundImage: 'url(/images/hifz.tiff)' }} />
+      <div className="page-bg-image" style={{ backgroundImage: 'url(/images/hifz.jpg)' }} />
       <div className="py-10 space-y-12 max-w-6xl mx-auto">
       {/* 🧠 HERO */}
       <div className="text-center space-y-6">
