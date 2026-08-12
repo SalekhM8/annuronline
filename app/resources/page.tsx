@@ -1,6 +1,30 @@
-import { BookOpen, Star, Rocket, FileText, Headphones, FileCheck, Presentation, Mail, MessageCircle, Target } from "lucide-react";
+import { BookOpen, Star, Rocket, FileText, Headphones, Download, User, Mail, MessageCircle, Target } from "lucide-react";
 
 export default function ResourcesPage() {
+  const guides = [
+    {
+      title: "Salaah Made Easy",
+      subtitle: "How to Pray with Understanding",
+      pages: 25,
+      cover: "/images/cover-salaah.png",
+      file: "/resources/salaah-made-easy.pdf",
+    },
+    {
+      title: "Tajweed Made Easy",
+      subtitle: "Recite the Quran Beautifully",
+      pages: 35,
+      cover: "/images/cover-tajweed.png",
+      file: "/resources/tajweed-made-easy.pdf",
+    },
+    {
+      title: "The Six Kalimahs Made Easy",
+      subtitle: "Learn & Understand the Kalimahs",
+      pages: 13,
+      cover: "/images/cover-six-kalimahs.png",
+      file: "/resources/six-kalimahs-made-easy.pdf",
+    },
+  ];
+
   return (
     <div className="py-10 space-y-12 max-w-6xl mx-auto">
       {/* 📚 HERO */}
@@ -18,69 +42,95 @@ export default function ResourcesPage() {
         </p>
       </div>
 
-      {/* 🎯 COMING SOON */}
-      <div className="fun-box-green text-white space-y-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-playful text-center flex items-center justify-center gap-3 relative z-10">
-          <Rocket className="w-12 h-12 text-white" />
-          Coming Soon!
+      {/* 📖 FREE GUIDES */}
+      <div className="space-y-8">
+        <h2 className="text-4xl md:text-5xl font-bold text-playful text-center gradient-text flex items-center justify-center gap-3">
+          <Download className="w-12 h-12 text-brand-green" />
+          Free Guides
         </h2>
-        <p className="text-xl md:text-2xl leading-relaxed text-center relative z-10 flex items-center justify-center gap-2">
-          <BookOpen className="w-7 h-7 text-white" />
-          We&apos;re preparing <span className="font-bold text-[--brand-gold-light]">amazing resources</span> for you!
+        <p className="text-xl text-brand-green-dark font-semibold text-center">
+          Download our beautifully illustrated guides — completely FREE!
         </p>
-        <p className="text-xl md:text-2xl leading-relaxed text-center relative z-10">
-          Check back soon for <span className="font-bold text-[--brand-gold-light]">FREE downloads</span>, study guides, and learning tools!
-        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {guides.map((guide, idx) => (
+            <div
+              key={guide.title}
+              className={idx % 2 === 0 ? "fun-box-green text-white" : "fun-box-gold text-brand-green-dark"}
+            >
+              <div className="space-y-4">
+                {/* Cover */}
+                <div className="h-48 rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/40">
+                  <img
+                    src={guide.cover}
+                    alt={`${guide.title} cover`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Info */}
+                <div className="text-center space-y-3 relative z-10">
+                  <h3 className="text-2xl md:text-3xl font-bold text-playful">
+                    {guide.title}
+                  </h3>
+                  <p className="text-lg font-semibold">
+                    {guide.subtitle}
+                  </p>
+                  <p className="text-sm font-bold flex items-center justify-center gap-4">
+                    <span className="flex items-center gap-1">
+                      <User className="w-4 h-4" />
+                      Maulana Ateiq-ur Rehman
+                    </span>
+                  </p>
+                  <p className="text-sm font-bold flex items-center justify-center gap-1">
+                    <FileText className="w-4 h-4" />
+                    {guide.pages} pages • PDF
+                  </p>
+                  <a
+                    href={guide.file}
+                    download
+                    className={idx % 2 === 0 ? "btn-fun-gold block w-full text-center flex items-center justify-center gap-2" : "btn-fun block w-full text-center flex items-center justify-center gap-2"}
+                  >
+                    <Download className={idx % 2 === 0 ? "w-5 h-5 text-brand-green-dark" : "w-5 h-5 text-white"} />
+                    Download Free
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* 📝 PLACEHOLDER SECTIONS */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="fun-card text-center space-y-4">
-          <div className="float flex justify-center">
-            <FileText className="w-16 h-16 text-brand-green" strokeWidth={2.5} />
+      {/* 🚀 MORE COMING SOON */}
+      <div className="fun-box-white space-y-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-playful text-center gradient-text flex items-center justify-center gap-3 relative z-10">
+          <Rocket className="w-10 h-10 text-brand-green" />
+          More Coming Soon!
+        </h2>
+        <p className="text-xl text-brand-green-dark font-semibold text-center relative z-10">
+          We&apos;re preparing even more resources for you — check back soon!
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+          <div className="fun-card text-center space-y-4">
+            <div className="float flex justify-center">
+              <Headphones className="w-16 h-16 text-brand-gold" strokeWidth={2.5} />
+            </div>
+            <h3 className="text-2xl font-bold text-playful text-brand-green">
+              Audio Resources
+            </h3>
+            <p className="text-lg text-brand-green-dark">
+              Recitation practice & Tajweed examples
+            </p>
           </div>
-          <h3 className="text-2xl font-bold text-playful text-brand-green">
-            Study Guides
-          </h3>
-          <p className="text-lg text-brand-green-dark">
-            Downloadable guides for Quran, Arabic & Islamic Studies
-          </p>
-        </div>
-        
-        <div className="fun-card text-center space-y-4">
-          <div className="float flex justify-center">
-            <Headphones className="w-16 h-16 text-brand-gold" strokeWidth={2.5} />
+          <div className="fun-card text-center space-y-4">
+            <div className="float flex justify-center">
+              <FileText className="w-16 h-16 text-brand-green" strokeWidth={2.5} />
+            </div>
+            <h3 className="text-2xl font-bold text-playful text-brand-green">
+              Worksheets
+            </h3>
+            <p className="text-lg text-brand-green-dark">
+              Practice materials for students of all ages
+            </p>
           </div>
-          <h3 className="text-2xl font-bold text-playful text-brand-green">
-            Audio Resources
-          </h3>
-          <p className="text-lg text-brand-green-dark">
-            Recitation practice & Tajweed examples
-          </p>
-        </div>
-
-        <div className="fun-card text-center space-y-4">
-          <div className="float flex justify-center">
-            <FileCheck className="w-16 h-16 text-brand-green" strokeWidth={2.5} />
-          </div>
-          <h3 className="text-2xl font-bold text-playful text-brand-green">
-            Worksheets
-          </h3>
-          <p className="text-lg text-brand-green-dark">
-            Practice materials for students of all ages
-          </p>
-        </div>
-
-        <div className="fun-card text-center space-y-4">
-          <div className="float flex justify-center">
-            <Presentation className="w-16 h-16 text-brand-gold" strokeWidth={2.5} />
-          </div>
-          <h3 className="text-2xl font-bold text-playful text-brand-green">
-            Presentations
-          </h3>
-          <p className="text-lg text-brand-green-dark">
-            Educational slides & visual materials
-          </p>
         </div>
       </div>
 
@@ -107,4 +157,3 @@ export default function ResourcesPage() {
     </div>
   );
 }
-
