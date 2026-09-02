@@ -7,19 +7,20 @@ import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { LogOut, Menu, X, Globe } from "lucide-react";
 import { BrandMark } from "@/components/site/Brand";
-import type { NavSection } from "@/lib/nav";
+import { ADMIN_NAV, STUDENT_NAV, TEACHER_NAV } from "@/lib/nav";
 
 export default function PortalShell({
-  sections,
+  role,
   userName,
   roleLabel,
   children,
 }: {
-  sections: NavSection[];
+  role: "STUDENT" | "TEACHER" | "ADMIN";
   userName: string;
   roleLabel: string;
   children: React.ReactNode;
 }) {
+  const sections = role === "ADMIN" ? ADMIN_NAV : role === "TEACHER" ? TEACHER_NAV : STUDENT_NAV;
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 

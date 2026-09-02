@@ -4,7 +4,6 @@ import { prisma } from "@/lib/prisma";
 import SessionProvider from "@/components/portal/SessionProvider";
 import PortalShell from "@/components/portal/PortalShell";
 import LockedScreen from "@/components/portal/LockedScreen";
-import { ADMIN_NAV, STUDENT_NAV, TEACHER_NAV } from "@/lib/nav";
 
 export default async function PortalLayout({ children }: { children: React.ReactNode }) {
   const session = await getSession();
@@ -26,8 +25,6 @@ export default async function PortalLayout({ children }: { children: React.React
     await prisma.loginEvent.update({ where: { id: latest.id }, data: { lastSeenAt: new Date() } });
   }
 
-  const sections =
-    user.role === "ADMIN" ? ADMIN_NAV : user.role === "TEACHER" ? TEACHER_NAV : STUDENT_NAV;
   const roleLabel =
     user.role === "ADMIN" ? "Admin" : user.role === "TEACHER" ? "Teacher portal" : "Student portal";
 
@@ -38,7 +35,7 @@ export default async function PortalLayout({ children }: { children: React.React
   return (
     <SessionProvider>
       <PortalShell
-        sections={sections}
+        role={user.role}
         userName={`${user.firstName} ${user.lastName}`}
         roleLabel={roleLabel}
       >
