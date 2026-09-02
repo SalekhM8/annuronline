@@ -43,7 +43,11 @@ export default async function PortalLayout({ children }: { children: React.React
 
   // Fee lock: students see only the locked screen (client requirement)
   const content =
-    user.role === "STUDENT" && user.lockedAt ? <LockedScreen reason={user.lockReason} /> : children;
+    user.role === "STUDENT" && user.lockedAt ? (
+      <LockedScreen userId={user.id} reason={user.lockReason} />
+    ) : (
+      children
+    );
 
   return (
     <SessionProvider>

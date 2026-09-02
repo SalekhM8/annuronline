@@ -162,6 +162,20 @@ export default async function StudentProfilePage({
             ) : (
               <p className="text-sm text-ink-soft">No direct-debit mandate yet.</p>
             )}
+            {student.mandate?.status === "PENDING" && student.mandate.setupUrl && (
+              <div className="mt-3 rounded-xl bg-gold-100 p-3">
+                <p className="text-xs font-bold text-gold-700">
+                  Direct-debit setup link (also sent in the welcome email — copy it to the
+                  student directly if needed):
+                </p>
+                <a
+                  href={student.mandate.setupUrl}
+                  className="mt-1 block break-all text-xs font-semibold text-green-800 underline"
+                >
+                  {student.mandate.setupUrl}
+                </a>
+              </div>
+            )}
             <div className="mt-3">
               <ActionButton
                 label="Resend welcome / mandate email"
