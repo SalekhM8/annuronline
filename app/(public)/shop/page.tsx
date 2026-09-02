@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "Books, learning materials and perfumes from An-Nur Academy. Order simply by email or WhatsApp.",
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 120;
 
 type ShopProduct = {
   id: string;
@@ -38,7 +38,7 @@ const PLACEHOLDERS: ShopProduct[] = [
     description: "A beautiful, easy-to-read mushaf — ideal for students of tajweed and hifz.",
     category: "BOOK",
     pricePence: 1499,
-    imageUrl: "/images/quran.png",
+    imageUrl: "/images/quran-opt.jpg",
     inStock: true,
   },
   {

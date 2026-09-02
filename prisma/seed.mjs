@@ -708,7 +708,7 @@ async function main() {
         description: "Beautiful 15-line mushaf, clear print — the standard for Hifz students.",
         category: "BOOK",
         pricePence: 1499,
-        imageUrl: "/images/quran.png",
+        imageUrl: "/images/quran-opt.jpg",
         sortOrder: 2,
       },
       {

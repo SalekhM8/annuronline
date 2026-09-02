@@ -78,7 +78,7 @@ export default function HomePage() {
         <div className="relative">
           <div className="card overflow-hidden">
             <img
-              src="/images/mainheroannur.png"
+              src="/images/mainheroannur-opt.jpg"
               alt="Students learning the Qur'an online with An-Nur Academy"
               className="aspect-[4/3] w-full object-cover"
             />

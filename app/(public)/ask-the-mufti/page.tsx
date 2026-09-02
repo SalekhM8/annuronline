@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Submit your questions on Islam to Mufti Ateiq-ur Rehman and read published answers. Every question is answered personally and treated in confidence.",
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 120;
 
 type PublishedQA = {
   id: string;

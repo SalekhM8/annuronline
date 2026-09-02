@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Client router cache: reuse a visited page's render for 30s so
+    // hopping between portal sections is instant; data refreshes on
+    // mutations via router.refresh() and after 30s naturally.
+    staleTimes: { dynamic: 30 },
+  },
   images: {
     // Allow placeholder external images if needed later
     remotePatterns: [

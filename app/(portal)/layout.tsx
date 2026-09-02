@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { after } from "next/server";
 import { getSession, roleHome } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import SessionProvider from "@/components/portal/SessionProvider";
@@ -15,15 +16,27 @@ export default async function PortalLayout({ children }: { children: React.React
   });
   if (!user || !user.isActive) redirect("/login");
 
-  // Opportunistically extend the latest login event (for itemised durations)
-  const latest = await prisma.loginEvent.findFirst({
-    where: { userId: user.id },
-    orderBy: { loggedInAt: "desc" },
-    select: { id: true, loggedInAt: true },
+  // Opportunistically extend the latest login event (for itemised durations).
+  // Runs AFTER the response is sent — never on the navigation critical path.
+  after(async () => {
+    try {
+      const latest = await prisma.loginEvent.findFirst({
+        where: { userId: user.id },
+        orderBy: { loggedInAt: "desc" },
+        select: { id: true, loggedInAt: true, lastSeenAt: true },
+      });
+      // Throttle: at most one write per 2 minutes per user.
+      if (
+        latest &&
+        Date.now() - latest.loggedInAt.getTime() < 12 * 60 * 60 * 1000 &&
+        Date.now() - latest.lastSeenAt.getTime() > 2 * 60 * 1000
+      ) {
+        await prisma.loginEvent.update({ where: { id: latest.id }, data: { lastSeenAt: new Date() } });
+      }
+    } catch (e) {
+      console.error("login touch failed:", e);
+    }
   });
-  if (latest && Date.now() - latest.loggedInAt.getTime() < 12 * 60 * 60 * 1000) {
-    await prisma.loginEvent.update({ where: { id: latest.id }, data: { lastSeenAt: new Date() } });
-  }
 
   const roleLabel =
     user.role === "ADMIN" ? "Admin" : user.role === "TEACHER" ? "Teacher portal" : "Student portal";
