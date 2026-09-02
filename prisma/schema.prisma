@@ -3,27 +3,31 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
+// ============================================================
+// LEGACY (v1 lead-capture — kept intact, still readable by admin)
+// ============================================================
+
 model Submission {
-  id            String   @id @default(cuid())
-  createdAt     DateTime @default(now())
-  type          SubmissionType
-  fullName      String
-  email         String
-  phone         String?
-  forWhom       String?  // self / someone else
-  studentName   String?
-  relationship  String?
-  age           Int?
-  gender        String?
-  courses       String   // comma-separated list of offerings
-  preferences   String?  // group/1:1, class times, availability, etc.
-  comments      String?
-  heardAbout    String?
+  id           String         @id @default(cuid())
+  createdAt    DateTime       @default(now())
+  type         SubmissionType
+  fullName     String
+  email        String
+  phone        String?
+  forWhom      String?
+  studentName  String?
+  relationship String?
+  age          Int?
+  gender       String?
+  courses      String
+  preferences  String?
+  comments     String?
+  heardAbout   String?
 }
 
 enum SubmissionType {
@@ -31,3 +35,554 @@ enum SubmissionType {
   ENROLLMENT
 }
 
+// ============================================================
+// USERS & AUTH
+// ============================================================
+
+enum Role {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  firstName     String
+  lastName      String
+  role          Role      @default(STUDENT)
+  isActive      Boolean   @default(true)
+  lockedAt      DateTime? // account lock (fees unpaid); null = unlocked
+  lockReason    String?
+  phone         String?
+  dateOfBirth   DateTime?
+  gender        String?
+  isChild       Boolean   @default(false) // under 18 at enrolment
+  guardianName  String?
+  guardianEmail String?
+  guardianPhone String?
+  addressLine   String?
+  city          String?
+  postcode      String?
+  notes         String? // admin-only notes
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  enrolments          Enrolment[]
+  taughtGroups        ClassGroup[]         @relation("GroupTeacher")
+  loginEvents         LoginEvent[]
+  boardMessages       BoardMessage[]       @relation("BoardOwner")
+  authoredMessages    BoardMessage[]       @relation("MessageAuthor")
+  journalEntries      JournalEntry[]
+  notifications       Notification[]
+  passwordResetTokens PasswordResetToken[]
+  certificates        Certificate[]
+  attendance          Attendance[]
+  mandate             PaymentMandate?
+  invoices            Invoice[]
+  observationsAsTeacher  Observation[] @relation("ObservedTeacher")
+  observationsAsObserver Observation[] @relation("Observer")
+  reviewedSubmissions AudioSubmission[]    @relation("Reviewer")
+
+  @@index([role])
+  @@index([email])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// Itemised login history for students and teachers (client requirement)
+model LoginEvent {
+  id         String   @id @default(cuid())
+  userId     String
+  loggedInAt DateTime @default(now())
+  lastSeenAt DateTime @default(now()) // bumped while session active -> duration
+  userAgent  String?
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, loggedInAt])
+}
+
+// ============================================================
+// COURSES, CLASSES, MODULES
+// ============================================================
+
+enum ClassType {
+  GROUP
+  ONE_TO_ONE
+}
+
+enum Audience {
+  ADULT
+  CHILD
+  MIXED
+}
+
+enum LearningMode {
+  LIVE
+  DISTANCE
+}
+
+model Course {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  title          String
+  arabicTitle    String?
+  tagline        String?
+  description    String
+  heroImage      String?
+  offersLive     Boolean  @default(true)
+  offersDistance Boolean  @default(false)
+  isActive       Boolean  @default(true)
+  sortOrder      Int      @default(0)
+  createdAt      DateTime @default(now())
+
+  modules     Module[]
+  classGroups ClassGroup[]
+  enrolments  Enrolment[]
+}
+
+model Module {
+  id       String  @id @default(cuid())
+  courseId String
+  order    Int
+  title    String
+  summary  String?
+  course   Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  progress         ModuleProgress[]
+  certificates     Certificate[]
+  audioSubmissions AudioSubmission[]
+  sessions         ClassSession[]
+
+  @@unique([courseId, order])
+  @@index([courseId])
+}
+
+model ClassGroup {
+  id              String    @id @default(cuid())
+  courseId        String
+  name            String
+  type            ClassType @default(GROUP)
+  audience        Audience  @default(MIXED)
+  teacherId       String?
+  scheduleText    String? // e.g. "Mon-Thu 5-6pm" / "Sat & Sun 10-11am"
+  monthlyFeePence Int? // group pricing
+  hourlyFeePence  Int? // 1:1 pricing
+  meetingLink     String?
+  capacity        Int?
+  isActive        Boolean   @default(true)
+
+  course     Course         @relation(fields: [courseId], references: [id])
+  teacher    User?          @relation("GroupTeacher", fields: [teacherId], references: [id])
+  enrolments Enrolment[]
+  sessions   ClassSession[]
+
+  @@index([courseId])
+  @@index([teacherId])
+}
+
+enum EnrolmentStatus {
+  PENDING_PAYMENT // welcome email sent, awaiting mandate setup
+  ACTIVE
+  LOCKED // fees unpaid — portal access blocked
+  CANCELLED
+}
+
+model Enrolment {
+  id                String          @id @default(cuid())
+  studentId         String
+  courseId          String
+  classGroupId      String?
+  mode              LearningMode    @default(LIVE)
+  status            EnrolmentStatus @default(PENDING_PAYMENT)
+  paymentDayOfMonth Int             @default(1) // admin-adjustable per student
+  feePenceOverride  Int?
+  startedAt         DateTime        @default(now())
+  cancelledAt       DateTime?
+
+  student    User             @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  course     Course           @relation(fields: [courseId], references: [id])
+  classGroup ClassGroup?      @relation(fields: [classGroupId], references: [id])
+  progress   ModuleProgress[]
+  invoices   Invoice[]
+  audioSubmissions AudioSubmission[]
+
+  @@unique([studentId, courseId, mode])
+  @@index([studentId])
+  @@index([courseId])
+  @@index([classGroupId])
+  @@index([status])
+}
+
+enum ModuleProgressStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model ModuleProgress {
+  id          String               @id @default(cuid())
+  enrolmentId String
+  moduleId    String
+  status      ModuleProgressStatus @default(NOT_STARTED)
+  startedAt   DateTime?
+  completedAt DateTime?
+
+  enrolment Enrolment @relation(fields: [enrolmentId], references: [id], onDelete: Cascade)
+  module    Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@unique([enrolmentId, moduleId])
+  @@index([moduleId])
+}
+
+model Certificate {
+  id          String   @id @default(cuid())
+  serial      String   @unique // e.g. ANA-2026-000123
+  studentId   String
+  moduleId    String
+  studentName String // snapshot at issue time
+  moduleTitle String
+  courseTitle String
+  issuedAt    DateTime @default(now())
+
+  student User   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  module  Module @relation(fields: [moduleId], references: [id])
+
+  @@index([studentId])
+}
+
+// ============================================================
+// SESSIONS, ATTENDANCE, POLLS
+// ============================================================
+
+model ClassSession {
+  id           String   @id @default(cuid())
+  classGroupId String
+  moduleId     String?
+  scheduledAt  DateTime
+  durationMins Int      @default(60)
+  topic        String?
+  isCancelled  Boolean  @default(false)
+
+  classGroup ClassGroup       @relation(fields: [classGroupId], references: [id], onDelete: Cascade)
+  module     Module?          @relation(fields: [moduleId], references: [id])
+  attendance Attendance[]
+  feedback   LessonFeedback[]
+
+  @@index([classGroupId, scheduledAt])
+  @@index([moduleId])
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  LATE
+}
+
+model Attendance {
+  id                  String           @id @default(cuid())
+  sessionId           String
+  studentId           String
+  status              AttendanceStatus
+  note                String?
+  absenceEmailSentAt  DateTime? // auto email seeking explanation
+  markedAt            DateTime         @default(now())
+
+  session ClassSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  student User         @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, studentId])
+  @@index([studentId])
+}
+
+// Anonymous end-of-class poll. No userId stored; voterHash prevents
+// double voting without identifying the voter in any UI or query.
+model LessonFeedback {
+  id        String   @id @default(cuid())
+  sessionId String
+  rating    Int // 1-5
+  comment   String?
+  voterHash String
+  createdAt DateTime @default(now())
+
+  session ClassSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, voterHash])
+  @@index([sessionId])
+}
+
+// ============================================================
+// MESSAGE BOARD & JOURNAL
+// ============================================================
+
+// Immutable per-student message board. No update/delete paths exist.
+// broadcastId groups messages created by a one-button class broadcast.
+model BoardMessage {
+  id          String   @id @default(cuid())
+  studentId   String // board owner
+  authorId    String
+  authorRole  Role
+  body        String
+  broadcastId String? // shared by all copies of a class-wide broadcast
+  createdAt   DateTime @default(now())
+
+  student User @relation("BoardOwner", fields: [studentId], references: [id], onDelete: Cascade)
+  author  User @relation("MessageAuthor", fields: [authorId], references: [id])
+
+  @@index([studentId, createdAt])
+  @@index([broadcastId])
+}
+
+model JournalEntry {
+  id        String   @id @default(cuid())
+  studentId String
+  entryDate DateTime @default(now())
+  title     String?
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  student User @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId, entryDate])
+}
+
+// ============================================================
+// BILLING (GoCardless direct debit; mock mode without API keys)
+// ============================================================
+
+enum MandateStatus {
+  PENDING
+  ACTIVE
+  CANCELLED
+  FAILED
+}
+
+model PaymentMandate {
+  id          String        @id @default(cuid())
+  studentId   String        @unique
+  provider    String        @default("GOCARDLESS")
+  mandateRef  String?
+  customerRef String?
+  status      MandateStatus @default(PENDING)
+  setupUrl    String? // redirect flow URL sent in welcome email
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  student User @relation(fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+enum InvoiceStatus {
+  PENDING
+  PAID
+  FAILED
+  OVERDUE // unpaid past due date -> lock trigger
+  CANCELLED
+}
+
+model Invoice {
+  id                 String        @id @default(cuid())
+  number             String        @unique // INV-2026-09-0001
+  studentId          String
+  enrolmentId        String?
+  periodYear         Int
+  periodMonth        Int // 1-12
+  description        String
+  amountPence        Int
+  status             InvoiceStatus @default(PENDING)
+  dueDate            DateTime
+  paidAt             DateTime?
+  providerPaymentRef String?
+  emailedAt          DateTime?
+  reminderEmailedAt  DateTime?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  student   User       @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  enrolment Enrolment? @relation(fields: [enrolmentId], references: [id])
+
+  @@unique([enrolmentId, periodYear, periodMonth])
+  @@index([studentId])
+  @@index([status, dueDate])
+}
+
+// ============================================================
+// DISTANCE LEARNING — audio assessment submissions
+// ============================================================
+
+enum AudioSubmissionStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  PASSED
+  REPEAT
+}
+
+model AudioSubmission {
+  id           String                @id @default(cuid())
+  enrolmentId  String
+  moduleId     String
+  audioUrl     String
+  durationSecs Int?
+  status       AudioSubmissionStatus @default(SUBMITTED)
+  reviewerId   String?
+  feedback     String?
+  submittedAt  DateTime              @default(now())
+  reviewedAt   DateTime?
+
+  enrolment Enrolment @relation(fields: [enrolmentId], references: [id], onDelete: Cascade)
+  module    Module    @relation(fields: [moduleId], references: [id])
+  reviewer  User?     @relation("Reviewer", fields: [reviewerId], references: [id])
+
+  @@index([enrolmentId])
+  @@index([status])
+}
+
+// ============================================================
+// QUALITY: lesson observations
+// ============================================================
+
+model Observation {
+  id           String   @id @default(cuid())
+  teacherId    String
+  observerId   String
+  observedAt   DateTime @default(now())
+  classContext String? // free text: which class/session
+  score        Int // out of maxScore
+  maxScore     Int      @default(10)
+  strengths    String?
+  improvements String?
+
+  teacher  User @relation("ObservedTeacher", fields: [teacherId], references: [id], onDelete: Cascade)
+  observer User @relation("Observer", fields: [observerId], references: [id])
+
+  @@index([teacherId, observedAt])
+}
+
+// ============================================================
+// PUBLIC-FACING: bookings, Ask-the-Mufti, shop
+// ============================================================
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CONVERTED
+  DECLINED
+}
+
+model AssessmentBooking {
+  id             String        @id @default(cuid())
+  fullName       String
+  email          String
+  phone          String?
+  audience       Audience      @default(MIXED)
+  courseInterest String?
+  preferredTimes String?
+  notes          String?
+  status         BookingStatus @default(PENDING)
+  scheduledAt    DateTime?
+  createdAt      DateTime      @default(now())
+
+  @@index([status, createdAt])
+}
+
+enum CounsellingType {
+  PERSONAL
+  YOUTH
+  MARRIAGE
+  BENEFITS_FINANCE
+}
+
+enum CounsellingMethod {
+  IN_PERSON
+  ONLINE
+}
+
+model CounsellingBooking {
+  id          String            @id @default(cuid())
+  fullName    String
+  email       String
+  phone       String?
+  type        CounsellingType
+  method      CounsellingMethod
+  message     String?
+  status      BookingStatus     @default(PENDING)
+  scheduledAt DateTime?
+  createdAt   DateTime          @default(now())
+
+  @@index([status, createdAt])
+}
+
+enum MuftiQuestionStatus {
+  PENDING
+  ANSWERED
+  PUBLISHED // answered + shown publicly (anonymised)
+  REJECTED
+}
+
+model MuftiQuestion {
+  id         String              @id @default(cuid())
+  name       String?
+  email      String
+  question   String
+  answer     String?
+  status     MuftiQuestionStatus @default(PENDING)
+  askedAt    DateTime            @default(now())
+  answeredAt DateTime?
+
+  @@index([status, askedAt])
+}
+
+enum ProductCategory {
+  BOOK
+  PERFUME
+  OTHER
+}
+
+model Product {
+  id          String          @id @default(cuid())
+  slug        String          @unique
+  name        String
+  description String?
+  category    ProductCategory @default(OTHER)
+  pricePence  Int
+  imageUrl    String?
+  inStock     Boolean         @default(true)
+  isActive    Boolean         @default(true)
+  sortOrder   Int             @default(0)
+  createdAt   DateTime        @default(now())
+}
+
+// ============================================================
+// MISC
+// ============================================================
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  body      String
+  link      String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+}
+
+model Setting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}

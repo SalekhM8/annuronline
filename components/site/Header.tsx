@@ -3,193 +3,146 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { useState, useEffect } from "react";
-import { BookOpen, GraduationCap, ShoppingBag, Star, Handshake } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { BrandLockup } from "@/components/site/Brand";
 
-const nav = [
-  { href: "/about", label: "About Us", Icon: BookOpen },
-  { href: "/offerings", label: "Offerings", Icon: GraduationCap },
-  { href: "/shop", label: "Shop", Icon: ShoppingBag },
+const COURSES = [
+  { href: "/courses/qaidah", label: "Qa'idah" },
+  { href: "/courses/tajweed", label: "Tajweed" },
+  { href: "/courses/arabic", label: "Arabic Language" },
+  { href: "/courses/hifz", label: "Hifz" },
+  { href: "/courses/islamic-studies", label: "Islamic Studies" },
+  { href: "/courses/weekly-tafsir", label: "Weekly Tafsir" },
+];
+
+const NAV = [
+  { href: "/about", label: "About" },
+  { href: "/fees", label: "Fees" },
+  { href: "/shop", label: "Shop" },
+  { href: "/resources", label: "Resources" },
+  { href: "/ask-the-mufti", label: "Ask the Mufti" },
+  { href: "/donate", label: "Donate" },
 ];
 
 export default function Header() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [open, setOpen] = useState(false);
+  const [coursesOpen, setCoursesOpen] = useState(false);
 
   return (
-    <>
-      {/* 🌟 LARGE LOGO HERO - Only on homepage, always visible */}
-      {pathname === "/" && (
-        <div className="flex justify-center pt-8 pb-4">
-          <div className="text-center">
-            <img 
-              src="/images/annurlogo-removebg-preview.png" 
-              alt="An‑Nur Academy" 
-              className="mx-auto h-48 w-48 md:h-56 md:w-56 rounded-3xl shadow-2xl" 
-            />
-            <h1 className="mt-4 text-2xl md:text-5xl font-bold text-playful gradient-text">
-              An-Nur Academy
-            </h1>
-            <p className="mt-2 text-lg md:text-xl text-brand-green-dark font-semibold flex items-center justify-center gap-2">
-              <Star className="w-5 h-5 text-brand-gold" fill="currentColor" />
-              Learn Quran, Arabic & Islam Online
-              <Star className="w-5 h-5 text-brand-gold" fill="currentColor" />
-            </p>
-          </div>
-        </div>
-      )}
+    <header className="sticky top-0 z-50 border-b border-green-900/10 bg-cream/90 backdrop-blur-md">
+      <div className="container-px flex items-center justify-between py-3">
+        <Link href="/" aria-label="An-Nur Academy home">
+          <BrandLockup compact />
+        </Link>
 
-      {/* 🎨 STICKY NAVBAR - GLASS MORPHISM */}
-      <header className={clsx(
-        "sticky top-0 z-50 transition-all duration-700 ease-out",
-        scrolled 
-          ? "shadow-2xl border-b border-[--brand-gold]/30" 
-          : "border-b border-transparent"
-      )}
-        style={{
-          background: scrolled 
-            ? 'linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75))'
-            : 'linear-gradient(145deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4))',
-          backdropFilter: 'blur(20px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-        }}
-      >
-        <div className="container-px mx-auto">
-          <div className={clsx(
-            "flex items-center justify-between transition-all duration-500",
-            scrolled ? "py-2" : "py-4"
-          )}>
-            {/* Logo - Small when scrolled */}
-            <Link href="/" className="flex items-center gap-3 scale-bounce">
-              <img 
-                src="/images/annurlogo-removebg-preview.png" 
-                alt="An‑Nur Academy" 
-                className={clsx(
-                  "rounded-xl shadow-lg transition-all duration-500",
-                  scrolled ? "h-12 w-12" : "h-16 w-16"
-                )} 
-              />
-              <span className={clsx(
-                "font-bold text-playful gradient-text transition-all duration-500",
-                scrolled ? "text-xl" : "text-2xl"
-              )}>
-                An‑Nur Academy
-              </span>
-            </Link>
-
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-6">
-              {nav.map((item) => (
-                <Link 
-                  key={item.href} 
-                  href={item.href} 
-                  className={clsx(
-                    "text-lg font-bold text-playful transition-all duration-300 hover:scale-110 flex items-center gap-2",
-                    pathname === item.href ? "text-brand-green" : "text-brand-green-dark hover:text-brand-gold"
-                  )}
-                >
-                  <item.Icon className="w-5 h-5" strokeWidth={2.5} />
-                  <span>{item.label}</span>
-                </Link>
-              ))}
-            </nav>
-
-            {/* CTA Buttons - Desktop */}
-            <div className="hidden md:flex items-center gap-2">
-              <Link href="/enroll" className="btn-fun-gold text-xs px-4 py-2 flex items-center gap-1">
-                <GraduationCap className="w-3 h-3 text-brand-green-dark" />
-                Enrol
-              </Link>
-              <Link href="/assessment" className="btn-fun text-xs px-4 py-2 flex items-center gap-1">
-                <Star className="w-3 h-3 text-white" fill="currentColor" />
-                Assessment
-              </Link>
-              <Link href="/counselling-booking" className="btn-fun-white text-xs px-4 py-2 flex items-center gap-1">
-                <Handshake className="w-3 h-3 text-brand-green-dark" />
-                Counselling
-              </Link>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button 
-              onClick={() => setMenuOpen((v) => !v)} 
-              className="md:hidden px-4 py-2 rounded-xl cursor-pointer transition-all hover:scale-105 text-brand-green font-bold text-2xl"
-              style={{
-                background: 'rgba(255,255,255,0.8)',
-                border: '1px solid rgba(0, 168, 107, 0.3)',
-                backdropFilter: 'blur(10px)',
-              }}
-              aria-label="Open menu" 
-              aria-expanded={menuOpen}
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-5 lg:flex">
+          <div
+            className="relative"
+            onMouseEnter={() => setCoursesOpen(true)}
+            onMouseLeave={() => setCoursesOpen(false)}
+          >
+            <button
+              className={clsx(
+                "flex items-center gap-1 text-sm font-bold transition-colors",
+                pathname.startsWith("/courses") ? "text-green-700" : "text-ink hover:text-green-700"
+              )}
+              aria-expanded={coursesOpen}
             >
-              {menuOpen ? "✕" : "☰"}
+              Courses <ChevronDown className="h-4 w-4" />
             </button>
-          </div>
-        </div>
-
-        {/* 📱 MOBILE MENU */}
-        {menuOpen && (
-          <div className="md:hidden fixed inset-0 z-50 bg-black/60" onClick={() => setMenuOpen(false)}>
-            <div 
-              className="absolute top-20 right-4 left-4 p-6 max-w-sm mx-auto rounded-3xl shadow-2xl border border-white/40"
-              style={{
-                background: 'linear-gradient(145deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))',
-                backdropFilter: 'blur(20px) saturate(180%)',
-                WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <nav className="space-y-3">
-                {nav.map((item) => (
-                  <Link 
-                    key={item.href} 
-                    href={item.href} 
-                    onClick={() => setMenuOpen(false)} 
-                    className={clsx(
-                      "flex items-center gap-3 rounded-2xl px-5 py-4 text-lg font-bold text-playful transition-all hover:scale-105",
-                      pathname === item.href 
-                        ? "bg-[--brand-green] text-white" 
-                        : "bg-[--fun-bg-1] text-brand-green-dark hover:bg-[--brand-gold]"
-                    )}
+            {coursesOpen && (
+              <div className="card absolute left-0 top-full w-56 p-2">
+                {COURSES.map((c) => (
+                  <Link
+                    key={c.href}
+                    href={c.href}
+                    className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-green-50 hover:text-green-800"
                   >
-                    <item.Icon className="w-6 h-6" strokeWidth={2.5} />
-                    <span>{item.label}</span>
+                    {c.label}
                   </Link>
                 ))}
-              </nav>
-              <div className="mt-6 space-y-3">
-                <Link 
-                  href="/enroll" 
-                  onClick={() => setMenuOpen(false)} 
-                  className="btn-fun-gold w-full text-center flex items-center justify-center gap-2"
-                >
-                  <GraduationCap className="w-5 h-5 text-brand-green-dark" />
-                  Enrol Now
-                </Link>
-                <Link 
-                  href="/assessment" 
-                  onClick={() => setMenuOpen(false)} 
-                  className="btn-fun w-full text-center flex items-center justify-center gap-2"
-                >
-                  <Star className="w-5 h-5 text-white" fill="currentColor" />
-                  Free Assessment
-                </Link>
               </div>
+            )}
+          </div>
+          {NAV.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={clsx(
+                "text-sm font-bold transition-colors",
+                pathname === item.href ? "text-green-700" : "text-ink hover:text-green-700"
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-2 lg:flex">
+          <Link href="/login" className="btn-ghost text-sm">
+            Portal login
+          </Link>
+          <Link href="/assessment" className="btn-outline text-sm">
+            Free assessment
+          </Link>
+          <Link href="/enrol" className="btn-gold text-sm">
+            Enrol now
+          </Link>
+        </div>
+
+        <button
+          className="rounded-lg p-2 text-green-900 lg:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+        >
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="border-t border-green-900/10 bg-cream lg:hidden">
+          <div className="container-px space-y-1 py-4">
+            <p className="eyebrow px-3 pt-1">Courses</p>
+            {COURSES.map((c) => (
+              <Link
+                key={c.href}
+                href={c.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-green-50"
+              >
+                {c.label}
+              </Link>
+            ))}
+            <div className="divider-dot my-2" />
+            {NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2 text-sm font-bold text-ink hover:bg-green-50"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="flex flex-col gap-2 pt-3">
+              <Link href="/enrol" onClick={() => setOpen(false)} className="btn-gold w-full">
+                Enrol now
+              </Link>
+              <Link href="/assessment" onClick={() => setOpen(false)} className="btn-outline w-full">
+                Free assessment
+              </Link>
+              <Link href="/login" onClick={() => setOpen(false)} className="btn-ghost w-full">
+                Portal login
+              </Link>
             </div>
           </div>
-        )}
-      </header>
-    </>
+        </div>
+      )}
+    </header>
   );
 }
-
-
