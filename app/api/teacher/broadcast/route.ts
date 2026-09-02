@@ -2,6 +2,7 @@ import { randomUUID } from "crypto";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { apiHandler, requireUser } from "@/lib/rbac";
+import { notifyMany } from "@/lib/notify";
 import { requireOwnGroup } from "../guard";
 
 const schema = z.object({
@@ -41,6 +42,13 @@ export async function POST(req: Request) {
         broadcastId,
       })),
     });
+
+    await notifyMany(
+      enrolments.map((e) => e.studentId),
+      "Class announcement",
+      input.body.length > 120 ? `${input.body.slice(0, 120)}…` : input.body,
+      "/student/messages"
+    );
 
     return { ok: true, recipients: enrolments.length, broadcastId };
   });

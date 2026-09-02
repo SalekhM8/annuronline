@@ -165,8 +165,8 @@ export default function HomePage() {
               restarting) as a grown-up takes courage.
             </p>
             <p className="mt-3 text-ink-soft">
-              All classes are segregated appropriately, and parents of younger students can follow
-              progress through the guardian view of our student portal.
+              All classes are segregated appropriately, and parents of younger students receive
+              progress updates, certificates and attendance notes by email.
             </p>
           </div>
           <div className="card p-8 md:p-10">

@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { apiHandler, requireUser, ApiError } from "@/lib/rbac";
+import { notify } from "@/lib/notify";
 
 const schema = z.object({
   studentId: z.string().min(1),
@@ -42,6 +43,13 @@ export async function POST(req: Request) {
       },
       select: { id: true, createdAt: true },
     });
+
+    await notify(
+      input.studentId,
+      user.role === "ADMIN" ? "New message from the academy" : "New message from your teacher",
+      input.body.length > 120 ? `${input.body.slice(0, 120)}…` : input.body,
+      "/student/messages"
+    );
 
     return { ok: true, message };
   });

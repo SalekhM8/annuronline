@@ -2,6 +2,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { apiHandler, requireUser, ApiError } from "@/lib/rbac";
 import { completeModule } from "@/lib/progress";
+import { notify } from "@/lib/notify";
 
 const schema = z.object({
   action: z.enum(["UNDER_REVIEW", "PASS", "REPEAT"]),
@@ -46,6 +47,18 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
           feedback: input.feedback,
         },
       });
+      const enrolment = await prisma.enrolment.findUnique({
+        where: { id: submission.enrolmentId },
+        select: { studentId: true },
+      });
+      if (enrolment) {
+        await notify(
+          enrolment.studentId,
+          "Assessment feedback",
+          "Your teacher has asked you to repeat this module's assessment — see their feedback.",
+          "/student/assessments"
+        );
+      }
       return { ok: true, status: "REPEAT" };
     }
 

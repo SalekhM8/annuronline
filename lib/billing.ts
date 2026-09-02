@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { sendAccountLockedEmail, sendInvoiceEmail, sendWelcomeEmail } from "@/lib/email";
+import { notify } from "@/lib/notify";
 import { formatDate, formatPence, monthName } from "@/lib/utils";
 
 /**
@@ -152,6 +153,12 @@ export async function generateMonthlyInvoices(now = new Date()) {
       paid: false,
     });
     await prisma.invoice.update({ where: { id: invoice.id }, data: { emailedAt: new Date() } });
+    await notify(
+      e.studentId,
+      "New invoice",
+      `${description} — ${formatPence(fee)}, due ${formatDate(dueDate)}.`,
+      "/student/fees"
+    );
     created++;
   }
   return { created };
@@ -171,6 +178,12 @@ export async function markInvoicePaid(invoiceId: string, providerPaymentRef?: st
     dueDate: formatDate(invoice.dueDate),
     paid: true,
   });
+  await notify(
+    invoice.studentId,
+    "Payment received — thank you",
+    `Receipt for ${invoice.number} (${formatPence(invoice.amountPence)}).`,
+    "/student/fees"
+  );
   // Paying clears an automatic lock if no other overdue invoices remain
   const stillOverdue = await prisma.invoice.count({
     where: { studentId: invoice.studentId, status: "OVERDUE" },
@@ -213,6 +226,12 @@ export async function lockStudent(studentId: string, reason: string) {
     data: { status: "LOCKED" },
   });
   await sendAccountLockedEmail(student.email, student.firstName);
+  await notify(
+    studentId,
+    "Portal access paused",
+    "A fee payment is outstanding. Access is restored as soon as payment is made.",
+    "/student/fees"
+  );
   return student;
 }
 
@@ -225,4 +244,5 @@ export async function unlockStudent(studentId: string, reason?: string) {
     where: { studentId, status: "LOCKED" },
     data: { status: "ACTIVE" },
   });
+  await notify(studentId, "Portal access restored", "Welcome back — your portal is active again.");
 }

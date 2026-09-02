@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { nextSerial } from "@/lib/certificates";
 import { sendCertificateEmail } from "@/lib/email";
+import { notify } from "@/lib/notify";
 
 const SITE = process.env.NEXTAUTH_URL ?? "https://annur.online";
 
@@ -105,6 +106,15 @@ export async function completeModule(
         data: { status: "IN_PROGRESS", startedAt: now },
       });
     }
+  }
+
+  if (isNewCertificate) {
+    await notify(
+      enrolment.studentId,
+      "Module completed — certificate issued!",
+      `MashaAllah! You completed "${mod.title}" and earned certificate ${certificate.serial}.`,
+      "/student/certificates"
+    );
   }
 
   if (!opts?.skipEmail && isNewCertificate) {

@@ -12,6 +12,7 @@ export const STUDENT_NAV: NavSection[] = [
     items: [
       { href: "/student", label: "Dashboard", icon: LayoutDashboard },
       { href: "/student/courses", label: "My courses", icon: BookOpen },
+      { href: "/student/class-times", label: "Class times", icon: CalendarDays },
       { href: "/student/study-map", label: "Study maps", icon: Map },
       { href: "/student/messages", label: "Message board", icon: MessageSquare },
       { href: "/student/journal", label: "Learning journal", icon: NotebookPen },

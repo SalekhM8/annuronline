@@ -6,10 +6,10 @@
  *   admin:   info@an-nur.online            / Admin123!  (or $ADMIN_PASSWORD)
  *   teacher: yusuf.khan@an-nur.online      / Teacher123!
  *   teacher: maryam.ali@an-nur.online      / Teacher123!
- *   student: amina.begum@example.com       / Student123!   (child, group Qa'idah + weekend Arabic)
- *   student: ibrahim.hussain@example.com   / Student123!   (adult, Tajweed group + distance Islamic Studies)
- *   student: zaynab.shah@example.com       / Student123!   (adult, 1:1 Hifz)
- *   student: locked.demo@example.com       / Student123!   (LOCKED — overdue invoice demo)
+ *   student: student1@example.com       / Student123!   (child, group Qa'idah + weekend Arabic)
+ *   student: student2@example.com   / Student123!   (adult, Tajweed group + distance Islamic Studies)
+ *   student: student3@example.com       / Student123!   (adult, 1:1 Hifz)
+ *   student: student4@example.com       / Student123!   (LOCKED — overdue invoice demo)
  */
 import { PrismaClient } from "@prisma/client";
 import { createHash, randomUUID } from "crypto";
@@ -78,10 +78,10 @@ async function main() {
   });
 
   const amina = await prisma.user.upsert({
-    where: { email: "amina.begum@example.com" },
+    where: { email: "student1@example.com" },
     update: {},
     create: {
-      email: "amina.begum@example.com",
+      email: "student1@example.com",
       passwordHash: studentHash,
       firstName: "Amina",
       lastName: "Begum",
@@ -97,10 +97,10 @@ async function main() {
   });
 
   const ibrahim = await prisma.user.upsert({
-    where: { email: "ibrahim.hussain@example.com" },
+    where: { email: "student2@example.com" },
     update: {},
     create: {
-      email: "ibrahim.hussain@example.com",
+      email: "student2@example.com",
       passwordHash: studentHash,
       firstName: "Ibrahim",
       lastName: "Hussain",
@@ -112,10 +112,10 @@ async function main() {
   });
 
   const zaynab = await prisma.user.upsert({
-    where: { email: "zaynab.shah@example.com" },
+    where: { email: "student3@example.com" },
     update: {},
     create: {
-      email: "zaynab.shah@example.com",
+      email: "student3@example.com",
       passwordHash: studentHash,
       firstName: "Zaynab",
       lastName: "Shah",
@@ -127,10 +127,10 @@ async function main() {
   });
 
   const lockedDemo = await prisma.user.upsert({
-    where: { email: "locked.demo@example.com" },
+    where: { email: "student4@example.com" },
     update: {},
     create: {
-      email: "locked.demo@example.com",
+      email: "student4@example.com",
       passwordHash: studentHash,
       firstName: "Locked",
       lastName: "Demo",
@@ -782,7 +782,7 @@ async function main() {
   console.log("Logins — admin: info@an-nur.online / Admin123! (or $ADMIN_PASSWORD)");
   console.log("teachers: yusuf.khan@an-nur.online, maryam.ali@an-nur.online / Teacher123!");
   console.log("students: amina.begum@ / ibrahim.hussain@ / zaynab.shah@ example.com / Student123!");
-  console.log("locked demo: locked.demo@example.com / Student123!");
+  console.log("locked demo: student4@example.com / Student123!");
 }
 
 main()

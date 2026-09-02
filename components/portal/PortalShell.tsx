@@ -5,8 +5,9 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
-import { LogOut, Menu, X, Globe } from "lucide-react";
+import { LogOut, Menu, X, Globe, UserRound } from "lucide-react";
 import { BrandMark } from "@/components/site/Brand";
+import NotificationsBell from "@/components/portal/NotificationsBell";
 import { ADMIN_NAV, STUDENT_NAV, TEACHER_NAV } from "@/lib/nav";
 
 export default function PortalShell({
@@ -68,6 +69,9 @@ export default function PortalShell({
       {nav}
       <div className="border-t border-cream/10 p-4">
         <p className="mb-2 truncate px-2 text-sm font-semibold text-cream/70">{userName}</p>
+        <Link href="/account" className="sidebar-link mb-1">
+          <UserRound className="h-4 w-4" /> My account
+        </Link>
         <div className="flex items-center gap-1">
           <Link href="/" className="sidebar-link flex-1">
             <Globe className="h-4 w-4" /> Website
@@ -90,15 +94,23 @@ export default function PortalShell({
         {sidebarInner}
       </aside>
 
+      {/* Desktop notifications bell */}
+      <div className="fixed right-6 top-6 z-40 hidden lg:block">
+        <NotificationsBell />
+      </div>
+
       {/* Mobile top bar + drawer */}
       <div className="fixed inset-x-0 top-0 z-40 flex items-center justify-between bg-green-950 px-4 py-3 lg:hidden">
         <div className="flex items-center gap-2">
           <BrandMark className="h-8 w-8" />
           <span className="font-heading text-cream">An&#8209;Nur Academy</span>
         </div>
-        <button onClick={() => setOpen((v) => !v)} className="p-1 text-cream" aria-label="Menu">
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <NotificationsBell />
+          <button onClick={() => setOpen((v) => !v)} className="p-1 text-cream" aria-label="Menu">
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
       {open && (
         <div className="fixed inset-0 z-30 bg-black/50 lg:hidden" onClick={() => setOpen(false)}>

@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { apiHandler, requireUser, ApiError } from "@/lib/rbac";
+import { notify } from "@/lib/notify";
 
 const schema = z.object({ body: z.string().min(1).max(5000) });
 
@@ -22,6 +23,12 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
         body: body.body,
       },
     });
+    await notify(
+      id,
+      "New message from the academy",
+      body.body.length > 120 ? `${body.body.slice(0, 120)}…` : body.body,
+      "/student/messages"
+    );
     return { ok: true };
   });
 }
