@@ -3,9 +3,9 @@
  * Run: node prisma/seed.mjs   (add --force to re-seed over existing v2 data)
  *
  * Demo logins (change in production!):
- *   admin:   info@an-nur.online            / Admin123!  (or $ADMIN_PASSWORD)
- *   teacher: yusuf.khan@an-nur.online      / Teacher123!
- *   teacher: maryam.ali@an-nur.online      / Teacher123!
+ *   admin:   info@an-nur.online            / AnNur!Demo2026
+ *   teacher: teacher1@example.com      / Teacher123!
+ *   teacher: teacher2@example.com      / Teacher123!
  *   student: student1@example.com       / Student123!   (child, group Qa'idah + weekend Arabic)
  *   student: student2@example.com   / Student123!   (adult, Tajweed group + distance Islamic Studies)
  *   student: student3@example.com       / Student123!   (adult, 1:1 Hifz)
@@ -52,10 +52,10 @@ async function main() {
   });
 
   const yusuf = await prisma.user.upsert({
-    where: { email: "yusuf.khan@an-nur.online" },
+    where: { email: "teacher1@example.com" },
     update: {},
     create: {
-      email: "yusuf.khan@an-nur.online",
+      email: "teacher1@example.com",
       passwordHash: teacherHash,
       firstName: "Yusuf",
       lastName: "Khan",
@@ -65,10 +65,10 @@ async function main() {
   });
 
   const maryam = await prisma.user.upsert({
-    where: { email: "maryam.ali@an-nur.online" },
+    where: { email: "teacher2@example.com" },
     update: {},
     create: {
-      email: "maryam.ali@an-nur.online",
+      email: "teacher2@example.com",
       passwordHash: teacherHash,
       firstName: "Maryam",
       lastName: "Ali",
@@ -780,7 +780,7 @@ async function main() {
 
   console.log("Seed complete.");
   console.log("Logins — admin: info@an-nur.online / Admin123! (or $ADMIN_PASSWORD)");
-  console.log("teachers: yusuf.khan@an-nur.online, maryam.ali@an-nur.online / Teacher123!");
+  console.log("teachers: teacher1@example.com, teacher2@example.com / Teacher123!");
   console.log("students: amina.begum@ / ibrahim.hussain@ / zaynab.shah@ example.com / Student123!");
   console.log("locked demo: student4@example.com / Student123!");
 }
